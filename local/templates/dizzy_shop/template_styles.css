@@ -1,0 +1,15 @@
+.btn-primary.added{
+    color: #fff;
+    background-color: #204d74;
+    border-color: #122b40;
+}
+
+.btn-like.active .btn-like-icon {
+    background: rgb(255, 143, 91);
+}
+
+.btn-like-button.active  {
+    background: rgb(255, 143, 91);
+}
+
+

@@ -1,0 +1,43 @@
+# Include your project-specific ignores in this file
+!.gitignore
+.idea/*
+.settings/
+.sass-cache/*
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+thumbs.db
+
+# Grunt
+cache/*
+!cache/.gitignore
+
+#Yii
+protected/runtime/*
+!protected/runtime/.gitignore
+assets/*
+!assets/.gitignore
+
+#Bitrix
+bitrix/*
+bitrix/cache/*
+upload/*
+!upload/tmp/.gitignore
+!bitrix/cache/.gitignore
+bitrix/managed_cache/*
+!bitrix/managed_cache/.gitignore
+bitrix/stack_cache/*
+!bitrix/stack_cache/.gitignore
+upload/resize_cache/*
+bitrix/backup/*
+!bitrix/backup/.gitignore
+bitrix/.settings.php
+bitrix/php_interface/dbconn.php
+
+#node.js
+node_modules/*
