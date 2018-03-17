@@ -1,0 +1,126 @@
+// HEADER :: START
+header.header(data-header)
+  .header__fix
+    .container
+      .header__wrapper
+        .header__logo
+          a.logo(href="/homepage.html")
+            +icon('ico-logo')
+        .header__phone
+          a(href='tel:+74956451010').h-link +7 (495) 645 10 10
+        .header__profile
+          span Личный кабинет
+          .header__profile-dropdown
+            .header__profile-dropdown-menu
+              a(href='#', data-mfp-src="#popup-auth", js-popup) Вход
+              a(href='#') Регистрация
+              //- a(href='#') Восстановление пароля
+        .header__like
+          +icon('ico-like')
+        .header__cart
+          +icon('ico-cart')
+          .header__cart-counter
+            span 3
+        .header__hamburger
+          .hamburger.hamburger--squeeze(js-hamburger-menu)
+            span.hamburger-box
+              span.hamburger-inner
+  // NAVI :: START
+  .navi
+    .container
+      .navi__wrapper
+        ul.navi__menu(js-teleport data-teleport-to="mobile-menu" data-teleport-condition="<768")
+          li
+            a(href="catalog.html" js-navi-drop data-for="catalog").js-navi-drop Каталог
+          li
+            a(href="collections.html") Коллекции
+          li
+            a(href="#") Условия работы
+          li
+            a(href="delivery.html") Доставка и оплата
+          li
+            a(href="about.html") О компании
+          li
+            a(href="contact.html") Контакты
+
+        .navi__search(js-teleport data-teleport-to="mobile-search" data-teleport-condition="<768")
+          form.navi__search-form(action="#" js-header-search)
+            button(type="submit")
+              i.icon.icon-search
+            input(type="text" placeholder="Поиск")
+
+  // DROPDOWN :: START
+  .navi-drop(data-drop="catalog")
+    .container
+      .row
+        .col
+          .row.navi-drop__menu
+            .col
+              .navi-drop__icon
+                +icon('ico-snow')
+              .navi-drop__name Зима
+
+              .navi-drop__links
+                a(href='#') Пальто
+                a(href='#') Куртки / Парки
+                a(href='#') Юбки / Брюки
+                a(href='#') Аксессуары
+            // col
+            .col
+              .navi-drop__icon
+                +icon('ico-rain')
+              .navi-drop__name Осень/Весна
+
+              .navi-drop__links
+                a(href='#') Плащи утепленные
+                a(href='#') Куртки / Парки
+                a(href='#') Пальто демисезонные
+                a(href='#') Плащи / Ветровки
+                a(href='#') Аксессуары
+            //col
+            .col
+              .navi-drop__icon
+                +icon('ico-sun')
+              .navi-drop__name Лето
+
+              .navi-drop__links
+                a(href='#') Платья / Комбинезоны
+                a(href='#') Блузы / Жакеты
+                a(href='#') Юбки
+                a(href='#') Брюки
+
+          .row
+            .col
+              .navi-drop__socials
+                .navi-drop__socials-title Мы в социальных сетях
+                .navi-drop__socials-list(js-teleport data-teleport-to="mobile-socials" data-teleport-condition="<768")
+                  a(href='#' target="_blank")
+                    +icon('ico-social-vk')
+                  a(href='#' target="_blank")
+                    +icon('ico-social-fb')
+                  a(href='#' target="_blank")
+                    +icon('ico-social-ok')
+
+        // col last
+        .col-md-4.col-grow-child
+          .navi-drop-card
+            img.navi-drop-card__image(src='img/dropdownImg.jpg' srcset='img/dropdownImg@2x.jpg 2x')
+            .navi-drop-card__name Куртка «Жасмин»
+          
+// MOBILE NAVI :: START
+.mobile-navi
+  .mobile-navi__wrapper
+    ul.mobile-navi__menu(data-teleport-target="mobile-menu")
+      // teleported content
+    
+    .mobile-navi__search(data-teleport-target="mobile-search")
+      // teleported
+      
+    .mobile-navi__phone
+      a(href='tel:+74956451010').h-link +7 (495) 645 10 10
+    
+    .mobile-navi__socials
+      .navi-drop__socials-list(data-teleport-target="mobile-socials")
+      
+    
+// HEADER :: END

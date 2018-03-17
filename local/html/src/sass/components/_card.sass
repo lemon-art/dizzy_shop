@@ -1,0 +1,386 @@
+// Card
+
+
+.zoomContainer
+	visibility: hidden
+	opacity: 0
+	transition: opacity .4s
+	+rmin($desktop)
+		&.is-visible
+			visibility: visible
+			opacity: 1
+			z-index: 500
+
+.zoomLens
+	box-shadow: 0 20px 70px rgba(0,0,0,0.4)
+
+.card
+	font-size: 13px
+	line-height: 15px
+	letter-spacing: 0.2px
+	position: relative
+	&__nav
+		font-size: 11px
+		line-height: 15px
+		font-weight: 300
+		display: flex
+		align-items: center
+		transition: all $transitionSpeed $ease
+		margin: 0 0 20px
+		background: #fff
+		&-back
+			color: #000
+			opacity: 0.6
+			transition: all $transitionSpeed $ease
+			&:hover
+				opacity: 1
+				text-decoration: none
+				color: #FF8F5B
+		&-menu
+			margin: 0 0 0 18px
+			padding: 0
+			list-style: none
+			display: flex
+		&-link
+			display: block
+			padding: 0 2px
+			color: #000
+			transition: all $transitionSpeed $ease
+		a.card__nav-link:hover
+			color: #FF8F5B
+		+rmin($mobile)
+			position: absolute
+			top: -35px
+			right: 20px
+
+	&__heading
+		font-size: 20px
+		line-height: 22px
+		font-weight: 500
+		letter-spacing: 0.3px
+		margin: 0 0 14px
+	&__info
+		margin: 0
+		padding: 0 0 10px
+		list-style: none
+		& > li
+			display: block
+			margin: 0 0 5px
+		mark
+			background: none
+			opacity: 0.6
+			margin: 0 10px 0 0
+			color: #000
+	&__price
+		margin: 0 0 14px
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-end
+
+		&-text
+			font-size: 32px
+			line-height: 40px
+			font-weight: 700
+			letter-spacing: 0.5px
+			margin: 0 10px 10px 0
+			color: #ff8f5b
+			white-space: nowrap
+			b
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+				font-weight: 700
+			small
+				display: block
+				font-size: 13px
+				line-height: 20px
+				font-weight: 500
+				color: #000
+		&-link
+			transition: all $transitionSpeed $ease
+			display: inline-block
+			color: #000
+			opacity: 0.6
+			white-space: nowrap
+			text-decoration: none
+			line-height: 20px
+			margin: 0 0 10px
+			u
+				text-decoration: none
+				border-bottom: 1px solid transparent
+				transition: inherit
+			.ico
+				position: relative
+				top: 4px
+				font-size: 16px
+				margin: 0 10px 0 0
+			&:hover
+				opacity: 1
+				text-decoration: none
+				u
+					border-color: #000
+
+			+rmin($mobile-s)
+				margin-left: auto
+
+
+	&__colors
+		margin: 0 0 10px
+		&-text
+			margin: 0 0 7px
+			mark
+				background: none
+				opacity: 0.6
+				margin: 0 10px 0 0
+				color: #000
+		&-group
+			display: flex
+			flex-wrap: wrap
+			margin: 0 -5px
+			+rmin($desktop)
+				margin: 0 -10px
+		&-item
+			width: 20%
+			border: 5px solid #fff
+			border-top: 0
+			border-bottom: 0
+			margin: 0 0 10px
+			position: relative
+			cursor: pointer
+			background: #F1F1F1
+			display: flex
+			align-items: center
+			justify-content: center
+			height: 90px
+			+rmin($desktop)
+				border-width: 10px
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				border: 2px solid #ff8f5b
+				transition: all $transitionSpeed $ease
+				opacity: 0
+			img
+				display: block
+				max-width: 100%
+				max-height: 100%
+				object-fit: contain
+			&.is-active:after
+				opacity: 1
+
+	&__size
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-end
+		line-height: 20px
+		margin: 0 0 28px
+		.table-size
+			max-width: none
+
+		&-text
+			margin: 0 10px 0 0
+		&-link
+			transition: all $transitionSpeed $ease
+			display: inline-block
+			color: #000
+			opacity: 0.6
+			white-space: nowrap
+			text-decoration: none
+			line-height: 20px
+			margin: 0
+			u
+				transition: inherit
+				text-decoration: none
+				border-bottom: 1px solid transparent
+			.ico
+				position: relative
+				top: 4px
+				font-size: 17px
+				margin: 0 10px 0 0
+			&:hover
+				opacity: 1
+				text-decoration: none
+				u
+					border-color: #000
+			+rmin($mobile-s)
+				margin-left: auto
+		&-group
+			min-width: 100%
+			display: flex
+			flex-wrap: wrap
+			padding: 8px 0 0
+			margin: 0 -3px
+			clear: both
+
+		&-table
+			width: 100%
+			text-align: center
+			color: rgba(0,0,0,0.6)
+			white-space: nowrap
+			// border-collapse: collapse
+			// cellspacing: 2px
+			border-spacing: 0 5px
+			margin: 10px 0
+			tfoot td
+				padding: 10px 0 0
+				background: none
+				text-align: left
+				&:after
+					display: none
+
+			th
+				font-weight: 400
+			td
+				padding: 0
+				width: 24px
+				height: 24px
+				background-color: rgba(0, 0, 0, 0.1)
+				vertical-align: middle
+				position: relative
+				&:after
+					content: ''
+					display: block
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 0
+					right: -1px
+					border: solid 1px #6a6a6a
+					z-index: 1
+				&.is-has
+					background: #fff
+				&.is-few
+					background: #fff
+					&:after
+						border-color: #ff8f5b
+						z-index: 2
+			&-text
+				+r($mobile-s)
+					display: none
+
+				// Colors
+
+				// &[class^="bg-"]
+				// 	background: #ccc
+				// 	color: #fff
+				// 	padding: 0 12px
+				// 	&:after
+				// 		opacity: 0
+
+				// &.bg-red
+				// 	background: #9f0216
+				// &.bg-green
+				// 	background: #7ed321
+				// &.bg-brown
+				// 	background: #8b572a
+
+
+			&-type
+				display: inline-block
+				vertical-align: top
+				padding: 0 12px
+				height: 24px
+				line-height: 24px
+				background-color: rgba(0, 0, 0, 0.1)
+				vertical-align: middle
+				position: relative
+				margin: 0 5px 0 0
+				&:after
+					content: ''
+					display: block
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 0
+					right: -1px
+					border: solid 1px #6a6a6a
+					z-index: 1
+				&.is-has
+					background: #fff
+				&.is-few
+					background: #fff
+					&:after
+						border-color: #ff8f5b
+						z-index: 2
+
+
+	&__check
+		margin: 0 3px 6px
+		position: relative
+		&-input
+			position: absolute
+			top: 0
+			left: 0
+			visibility: hidden
+			&:checked ~ .card__check-btn
+				border-color: #ff8f5b
+				background: #ff8f5b
+				color: #fff
+		&-btn
+			display: flex
+			align-items: center
+			justify-content: center
+			min-width: 26px
+			min-height: 26px
+			border: 1px solid rgba(0,0,0,0.6)
+			color: rgba(0,0,0,0.6)
+			letter-spacing: 0.2px
+			line-height: 1.1
+			cursor: pointer
+			padding-top: 1px
+			transition: all $transitionSpeed $ease
+			&:hover
+				border-color: #ff8f5b
+
+	&__ctrl
+		display: flex
+		align-items: center
+		padding: 0 0 20px
+		.btn-like
+			margin: 0 0 20px
+		.btn-primary
+			margin: 0 10px 20px 0
+			white-space: nowrap
+			+rmin($wide)
+				min-width: 210px
+		+r($mobile-s)
+			flex-wrap: wrap
+	&__details
+		dt
+			display: block
+			position: relative
+			cursor: pointer
+			margin: 0 0 14px
+			color: rgba(0,0,0,0.6)
+			transition: all $transitionSpeed $ease
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				top: 50%
+				right: 0
+				border-left: 5px solid transparent
+				border-right: 5px solid transparent
+				border-top: 8px solid #000
+				margin: -4px 0 0
+				transition: inherit
+			&.is-active:after
+				transform: rotate(180deg)
+		dd
+			display: none
+			margin: 0 0 14px
+		ul
+			margin: 0 0 14px
+			padding: 0
+			list-style: none
+			line-height: 18px
+			& > li
+				display: block
+		p
+			margin: 0 0 14px
+		mark
+			background: none
+			color: rgba(0,0,0,0.6)

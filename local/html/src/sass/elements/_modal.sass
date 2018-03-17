@@ -1,0 +1,174 @@
+// Styles for dialog window
+.mfp-wrap
+  -webkit-overflow-scrolling: touch
+  -webkit-transform: translateZ(0)
+
+html.mfp-helper
+  height: 100%
+  body
+    overflow: hidden
+    height: 100%
+    -webkit-transform: translateZ(0)
+
+
+  
+  
+// Fade-zoom animation for first dialog
+
+.popup-buble
+  .popup-dialog
+    opacity: 0
+    transition: all 0.2s ease-in-out
+    transform: scale(0.8)
+  &.mfp-ready .popup-dialog
+    opacity: 1
+    transform: scale(1)
+  &.mfp-removing .popup-dialog
+    transform: scale(0.8)
+    opacity: 0
+  &.mfp-bg
+    background: rgba($fontColor, .4)
+    opacity: 0
+    transition: opacity 0.3s $ease
+  &.mfp-ready.mfp-bg
+    opacity: 1
+  &.mfp-removing.mfp-bg
+    opacity: 0
+
+.popup-dialog
+  position: relative
+  text-align: left
+  margin: 30px auto
+
+// Fade-move animation
+// .my-mfp-slide-bottom
+//   .zoom-anim-dialog
+//     opacity: 0
+//     transition: all 0.2s ease-out
+//     transform: translateY(-20px) perspective(600px) rotateX(10deg)
+//   &.mfp-ready .zoom-anim-dialog
+//     opacity: 1
+//     transform: translateY(0) perspective(600px) rotateX(0)
+//   &.mfp-removing .zoom-anim-dialog
+//     opacity: 0
+//     transform: translateY(-10px) perspective(600px) rotateX(10deg)
+//   &.mfp-bg
+//     opacity: 0
+//     transition: opacity 0.3s ease-out
+//   &.mfp-ready.mfp-bg
+//     opacity: 0.8
+//   &.mfp-removing.mfp-bg
+//     opacity: 0
+
+// .mfp-with-zoom
+//   .mfp-container, &.mfp-bg
+//     opacity: 0
+//     -webkit-backface-visibility: hidden
+//     transition: all 0.3s ease-out
+//   &.mfp-bg
+//     background: rgba($fontColor, .6)
+//   &.mfp-ready
+//     .mfp-container
+//       opacity: 1
+//     &.mfp-bg
+//       opacity: 0.8
+//   &.mfp-removing
+//     .mfp-container, &.mfp-bg
+//       opacity: 0
+
+.popup-sizes
+  width: 100%
+  max-width: 1020px
+  background: #fff
+  &__title
+    background: #CCCCCC
+    padding: 12px 20px
+    color: #fff
+    font-size: 13px
+    font-weight: 700
+  .mfp-close
+    color: #fff
+    position: absolute
+    top: 0
+    right: 10px
+    opacity: 1
+    cursor: pointer
+  &__content
+    padding: 20px
+    overflow: scroll
+  &__table
+    width: 100%
+    min-width: 900px
+    overflow: scroll
+    font-size: 13px
+    text-align: center
+    border-collapse: collapse
+    tr
+      &:nth-child(even)
+        background: #F3F5F7
+    th
+      color: $colorOrange
+      padding: 8px 5px
+      &:first-child
+        padding-left: 20px
+        padding-right: 10px
+        text-align: left
+    td
+      padding: 8px 5px
+      &:first-child
+        color: #737373
+        padding-left: 20px
+        padding-right: 10px
+        text-align: left
+
+
+.popup-auth
+  width: 100%
+  max-width: 500px
+  background: #fff
+  box-shadow: 0 0 25px rgba(0,0,0,.25)
+  &__content
+    padding: 40px 80px
+    +r($tablet)
+      padding: 20px
+  &__form
+    width: 100%
+  &__link
+    text-align: right
+    color: rgba(0, 0, 0, 0.6)
+    font-size: 13px
+    width: 100%
+    a
+      color: rgba(0, 0, 0, 0.6)
+      text-decoration: underline
+  &__submit
+    display: flex
+    width: 100%
+    margin-top: 30px
+    &-item
+      flex: 0 0 50%
+      &:first-child
+        padding-right: 10px
+      &:nth-child(2)
+        padding-left: 10px
+
+
+.popup-fast
+  width: 100%
+  max-width: 860px
+  background: #fff
+  .mfp-close
+    color: #fff
+    position: absolute
+    top: 0
+    right: 10px
+    opacity: 1
+    cursor: pointer
+  &__title
+    background: #CCCCCC
+    padding: 12px 20px
+    color: #fff
+    font-size: 13px
+    font-weight: 700
+  &__content
+    padding: 20px

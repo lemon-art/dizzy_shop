@@ -1,0 +1,46 @@
+.breadcrumbs
+  margin: 20px 0
+  font-size: 11px
+  line-height: 15px
+  font-weight: 300
+  letter-spacing: 0.33px
+  color: rgba($fontColor, .4)
+  .container
+    padding-right: 200px
+  a
+    display: inline-block
+    position: relative
+    transition: all $transitionSpeed $ease
+    &::after
+      display: inline-block
+      content: '>'
+      padding-right: 8px
+      padding-left: 8px
+      color: inherit
+      // color: $fontColor !important
+    &:last-child
+      &::after
+        display: none
+    &:hover
+      color: $colorOrange
+
+  &__title
+    display: block
+    margin: 20px 0 0 0
+    font-size: 32px
+    font-weight: 900
+    letter-spacing: 0.96px
+    line-height: 1
+
++r($tablet)
+  .breadcrumbs
+    .container
+      padding-right: 20px
+    &__title
+      font-size: 28px
+
++r($mobile-s)
+  .breadcrumbs
+    &__title
+      font-size: 24px
+      letter-spacing: 0.46px

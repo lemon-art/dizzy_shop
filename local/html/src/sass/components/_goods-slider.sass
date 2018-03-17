@@ -1,0 +1,103 @@
+
+// GOODS
+.goods-slider
+  margin: 75px 0
+  &__wrapper
+    margin-top: 60px
+
+  &__slider
+    margin-left: -10px
+    margin-right: -10px
+
+
+.slider-card
+  margin-left: 10px
+  margin-right: 10px
+  &__image
+    display: block
+    background: rgba($fontColor, .07)
+    overflow: hidden
+    img
+      max-width: 100%
+      margin-left: auto
+      margin-right: auto
+      transition: all $transitionSpeed $ease
+    &:hover
+      img
+        transform: scale(1.05)
+  &__name
+    display: block
+    margin-top: auto
+    padding-top: 15px
+    font-size: 16px
+    letter-spacing: 0.48px
+    transition: color $transitionSpeed $ease
+    &:hover
+      color: $colorOrange
+  &__category
+    margin-top: 5px
+    font-size: 13px
+    letter-spacing: 0.39px
+    color: $fontColor60
+  &__price
+    margin-top: 5px
+    font-size: 13px
+    letter-spacing: 0.39px
+    color: $colorOrange
+
+
++r($wide)
+  .goods-slider
+    &__slider
+      margin-left: 15px
+      margin-right: 15px
+
+
++r($desktop)
+  .goods-slider
+    margin: 60px 0
+    &__wrapper
+      margin-top: 40px
+
+
++r($tablet)
+  .goods-slider
+    margin: 50px 0
+    &__wrapper
+      margin-top: 30px
+
+
+
+.slick-arrows
+
+  .slick-arrow
+    position: absolute
+    top: 40%
+    transform: translateY(-50%)
+    background: transparent
+    border: 0
+    font-size: 0
+    box-shadow: none
+    opacity: .4
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    +sprite(slick-arrow)
+    &:hover
+      opacity: .8
+
+  .slick-prev
+    left: -30px
+
+  .slick-next
+    right: -30px
+    transform: translateY(-50%) rotate(180deg)
+
++r($wide)
+  .slick-arrows
+    .slick-prev
+      left: -20px
+      transform: translateY(-50%) scale(.8)
+
+    .slick-next
+      right: -20px
+      transform: translateY(-50%) rotate(180deg) scale(.8)

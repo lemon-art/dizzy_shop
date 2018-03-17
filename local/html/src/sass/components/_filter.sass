@@ -1,0 +1,215 @@
+// Filter
+
+.filter
+	margin: 0 0 20px
+	font-size: 13px
+	line-height: 18px
+
+	// &.is-open
+	// 	.filter__dropdown
+	// 		opacity: 1
+	// 		visibility: visible
+	// 		transform: translate(0,0)
+
+	&__toggle
+		display: block
+		font-size: 16px
+		line-height: 20px
+		font-weight: 500
+		padding: 8px 20px
+		border-radius: 20px
+		width: 100%
+		border: 2px solid #000
+		background: none
+		color: #000
+		margin: 0 0 20px
+		transition: all $transitionSpeed $ease
+		&:hover
+			background: #000
+			color: #fff
+		+rmin($tablet)
+			display: none
+
+	&__dropdown
+		display: none
+		padding: 20px
+		background: #fff
+		box-shadow: 0px 3px 8px rgba($fontColor, .2)
+		+rmin($tablet)
+			display: block !important
+			
+
+	&__title
+		transition: $transitionSpeed $ease
+		display: block
+		padding: 0 0 0 20px
+		margin: 0 0 12px
+		position: relative
+		color: #000
+		font-weight: 600
+		&:hover
+			color: #FF8F5B
+			text-decoration: none
+		&.open
+			.filter__arrow-btn
+				&:before
+					transform: scale(-1)
+			& + .filter__menu
+				display: block
+	&__menu
+		margin: 0 0 15px
+		padding: 0 0 0 20px
+		list-style: none
+		display: none
+		& > li
+			display: inline-block
+			margin: 0 20px 5px 0
+			+rmin($desktop)
+				display: block
+	&__link
+		transition: $transitionSpeed $ease
+		display: block
+		color: #000
+		&:hover
+			color: #FF8F5B
+			text-decoration: none
+	&__arrow-btn
+		position: absolute
+		top: 4px
+		left: 4px
+		padding: 3px
+		&:before
+			content: ''
+			border-left: 4px solid transparent
+			border-right: 4px solid transparent
+			border-bottom: 7px solid #000
+			padding: 0
+			width: 0
+			height: 0
+			margin-top: -2px
+			display: block
+			transition: transform $transitionSpeed $ease
+	&__ctrl
+		text-align: center
+	+rmin($desktop)
+		margin: 0 0 20px
+		&__btn
+			display: none
+		&__dropdown
+			position: relative
+			overflow: visible
+			transform: translate(0,0)
+			margin: 0 0 40px
+
+
+.filter-group
+	position: relative
+	padding: 0 0 10px
+	margin: 0 0 20px
+	border-bottom: 1px solid rgba(0,0,0,0.2)
+	&.is-open
+		.filter-group__btn:after
+			transform: rotate(0deg)
+	&.is-change
+		.filter-group__reset
+			opacity: 1
+			visibility: visible
+	&__btn
+		display: block
+		position: relative
+		padding: 0 20px
+		margin: 0 0 8px
+		transition: all $transitionSpeed $ease
+		font-size: 16px
+		line-height: 22px
+		font-weight: 500
+		letter-spacing: 0.2px
+		color: #000
+		cursor: pointer
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			top: 50%
+			left: 0
+			border-left: 5px solid transparent
+			border-right: 5px solid transparent
+			border-top: 8px solid #000
+			margin: -4px 0 0
+			transition: inherit
+			transform: rotate(180deg)
+		&:hover
+			color: #FF8F5B
+
+	&__reset
+		transition: all $transitionSpeed $ease
+		display: block
+		padding: 0
+		background: none
+		color: #666666
+		position: absolute
+		top: 0
+		right: 0
+		line-height: 22px
+		opacity: 0
+		visibility: hidden
+		.ico
+			font-size: 12px
+		&:hover
+			color: #000
+
+	&__content
+		// display: none
+
+
+	+rmin($desktop)
+		margin: 0 0 20px
+		padding: 0
+		border: none
+		.filter-group__content
+			display: block
+
+
+
+.filter-check
+    display: block
+    position: relative
+    font-size: 13px
+    line-height: 18px
+    font-weight: 500
+    color: rgba(0,0,0,0.6)
+    padding: 0 0 0 20px
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    &:hover
+        color: rgba(0,0,0,1)
+        .filter-check__text
+            text-decoration: underline
+    &__input
+        position: absolute
+        top: 0
+        left: 0
+        visibility: hidden
+        &:checked ~ .filter-check__checkbox
+            border-color: #ff8f5b
+            background: #ff8f5b
+        &:checked ~ .filter-check__text
+            text-decoration: underline
+            color: rgba(0,0,0,1)
+    &__checkbox
+        transition: all $transitionSpeed $ease
+        width: 10px
+        height: 10px
+        background: #fff
+        border: 1px solid rgba(0,0,0,0.6)
+        position: absolute
+        top: 4px
+        left: 0
+        display: flex
+        align-items: center
+        justify-content: center
+        .ico
+            transition: inherit
+            font-size: 10px
+            color: #1EA0E4
+            opacity: 0

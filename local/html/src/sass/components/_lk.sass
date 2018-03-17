@@ -1,0 +1,463 @@
+// Lk
+
+
+.lk
+	padding: 20px 0 50px
+	& ~ .goods-slider
+		margin-top: 10px
+	&__left-sidebar
+		width: 100%
+		+rmin($desktop)
+			float: left
+			width: 200px
+			margin-left: -100%
+
+	&__right-sidebar
+		width: 100%
+		clear: both
+		+rmin($wide)
+			clear: none
+			float: right
+			width: 200px
+			margin-left: -200px
+	&__content
+		width: 100%
+
+		+rmin($desktop)
+			float: left
+			padding: 0 0 0 220px
+		// +rmin($desktop)
+			// padding: 0 200px 0 220px
+		+rmin($wide)
+			padding: 0 220px 0 240px
+	&__heading
+		font-size: 32px
+		line-height: 1
+		font-weight: 900
+		margin: 0 0 15px
+		clear: both
+	// &__scroll
+	// 	position: relative
+	// 	overflow-x: auto
+	// 	margin: 0 -10px 20px
+	// 	padding: 0 10px 10px
+	&__form
+		padding: 20px 0 25px
+		.ui-select
+			max-width: 380px
+
+
+	+r($desktop)
+		.container
+			display: flex
+			flex-wrap: wrap
+		&__left-sidebar
+			order: 1
+		&__right-sidebar
+			order: 3
+		&__content
+			order: 2
+
+
+.lk__nav
+	padding: 24px 20px
+	margin: 0 0 40px
+	background: #fff
+	box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2)
+	font-size: 16px
+	line-height: 22px
+	font-weight: 500
+	&-menu
+		margin: 0
+		padding: 0
+		list-style: none
+		& > li
+			display: block
+			margin: 0 0 18px
+			&:last-child
+				margin: 0
+
+	&-link
+		@extend .link-grey
+		display: inline
+		margin: 0 0 18px
+		&:hover, &.is-active
+			color: #000
+			border-color: #000
+			// text-decoration: underline
+
+	&-exit
+		color: rgba(0,0,0,0.6)
+		text-decoration: none
+		transition: color $transitionSpeed
+		white-space: nowrap
+		u
+			transition: border-color $transitionSpeed
+			text-decoration: none
+			border-bottom: 1px solid transparent
+		.ico
+			font-size: 16px
+			margin: 0 10px 0 0
+			vertical-align: middle
+			position: relative
+			top: -1px
+			transition: none
+		&:hover
+			color: #000
+			u
+				border-color: #000
+
+	+r($desktop)
+		font-size: 14px
+		&-menu
+			display: flex
+			flex-wrap: wrap
+			& > li
+				margin: 0 18px 0 0
+	+r($mobile)
+		&-menu
+			display: block
+			& > li
+				margin: 0 0 18px
+
+	// +rmin($tablet)
+	// 	display: flex
+	// 	flex-wrap: wrap
+	// 	&-link
+	// 		margin: 0 18px 0 0
+	// +rmin($desktop)
+	// 	display: block
+	// 	&-link
+	// 		margin: 0 0 18px
+	// 		&:last-child
+	// 			margin: 0
+
+
+
+
+.lk__orders
+	width: 100%
+	border-collapse: collapse
+	border-spacing: 0
+	font-size: 16px
+	line-height: 22px
+	font-weight: 500
+	letter-spacing: 0.2px
+	text-align: center
+	margin: 0 0 40px
+	white-space: nowrap
+	+r($wide)
+		font-size: 13px
+	+r($tablet)
+		display: block
+		& > thead
+			display: none
+		& > tbody
+			display: block
+		tr.lk__orders-group-trigger
+			display: none
+		tr.lk__orders-group-content
+			display: block !important
+			margin: 0 0 20px
+			& > td
+				display: block
+
+	th
+		font-size: 13px
+		color: rgba(0,0,0,0.6)
+		padding: 14px 10px
+		white-space: nowrap
+		font-weight: 500
+	td
+		padding: 14px 10px
+		border-top: 1px solid #ccc
+
+	.lk__products tr:hover
+		box-shadow: none
+		td
+			border-top-color: #ccc
+
+	&-group
+		&.is-open
+			.lk__orders-group-trigger
+				background: #f3f5f7
+				box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.2)
+	&-group:not(.is-open)
+		.lk__orders-group-content
+			display: none
+
+	&-group-trigger
+		cursor: pointer
+		transition: background $transitionSpeed, box-shadow $transitionSpeed
+		&:hover
+			background: #f3f5f7
+			box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.2)
+	&-group-content
+		background-color: #fff
+		box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2)
+		td
+			padding: 0
+			border: none
+
+
+.lk__products
+	width: 100%
+	border-collapse: collapse
+	font-size: 16px
+	line-height: 22px
+	font-weight: 500
+	white-space: nowrap
+	text-align: center
+	margin: 0 0 34px
+	.table-size
+		margin-top: -5px
+	.ui-number .jq-number__spin
+		opacity: 0
+	&-number
+		text-align: left
+		display: block
+		font-size: 20px
+		line-height: 22px
+		letter-spacing: 0.3px
+		font-weight: 500
+		margin: 0
+		color: rgba(0,0,0,0.6)
+		padding: 10px
+	[data-ctrl]
+		padding: 0
+		width: 0
+	thead td
+		border: none
+	& > thead > tr > th
+		padding: 10px
+		font-size: 13px
+		font-weight: 500
+		color: rgba(0,0,0,0.6)
+	& > tbody > tr > td
+		position: relative
+		padding: 10px
+		border-bottom: none
+		border-top: 1px solid #ccc
+		vertical-align: top
+		transition: inherit
+	& > tbody > tr
+		transition: all $transitionSpeed $ease
+		&:first-child td
+			border-top: none
+		&:hover
+			background-color: #ffffff
+			box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2)
+			.lk__products-ctrl
+				opacity: 1
+				visibility: visible
+			.ui-number .jq-number__spin
+				opacity: 1
+	&-item
+		overflow: hidden
+		margin: 0 0 0 -5px
+		+r($tablet)
+			margin: 0 0 10px
+	&-image
+		display: inline-block
+		min-width: 90px
+		width: 90px
+		height: 140px
+		line-height: 140px
+		margin: 0 10px 0 0
+		padding: 5px
+		background: #EDEDED
+		float: left
+		img
+			width: 100%
+			max-width: 100%
+			display: inline-block
+			vertical-align: middle
+	&-desc
+		overflow: hidden
+	&-title
+		text-align: left
+		display: block
+		margin: 0 0 32px
+		font-size: 16px
+		line-height: 22px
+		font-weight: 500
+		+r($tablet)
+			margin: 0 0 10px
+	&-info
+		margin: 0
+		padding: 0
+		list-style: none
+		text-align: left
+		font-size: 13px
+		line-height: 15px
+		& > li
+			display: block
+			margin: 0 0 5px
+		// a
+		// 	text-decoration: underline
+		// 	color: #000
+		// 	transition: all $transitionSpeed $ease
+		// 	&:hover
+		// 		color: rgba(0,0,0,0.6)
+		// 		text-decoration: underline
+		mark
+			margin: 0 5px 0 0
+			background: none
+			color: rgba(0,0,0,0.6)
+
+	&-ctrl
+		position: absolute
+		bottom: 0
+		right: 0
+		display: flex
+		align-items: center
+		font-size: 13px
+		line-height: 22px
+		padding: 10px
+		background: #fff
+		transition: all $transitionSpeed $ease
+		opacity: 0
+		visibility: hidden
+		z-index: 10
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			bottom: 0
+			right: 100%
+			width: 30px
+			background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
+		.btn
+			margin: 0 10px
+			white-space: nowrap
+	&-add
+		display: inline-block
+		vertical-align: top
+		position: relative
+		margin: 0 10px
+		text-decoration: underline
+		color: rgba(0,0,0,0.6)
+		&:hover
+			color: rgba(0,0,0,1)
+	&-delete
+		display: inline-block
+		vertical-align: top
+		position: relative
+		padding: 0 0 0 18px
+		margin: 0 10px
+		text-decoration: underline
+		color: #ff8f5b
+		.ico
+			display: block
+			position: absolute
+			top: 50%
+			left: 0
+			font-size: 11px
+			transform: translate(0,-50%)
+			stroke: currentColor
+
+	+r($wide)
+		font-size: 13px
+	+r($desktop)
+		&-ctrl
+			opacity: 1
+			visibility: visible
+		.ui-number .jq-number__spin
+			opacity: 1
+	+r($tablet)
+		display: block
+		text-align: left
+		// padding: 10px
+		white-space: normal
+
+		& > thead, & > tbody
+			display: block
+			& > tr > th
+				display: none
+		& > thead
+			margin: 0 0 10px
+			& > tr, & > tr > td
+				display: block
+				padding: 0
+
+		& > tbody > tr
+			display: flex
+			flex-wrap: wrap
+			margin: 0
+			padding: 10px
+			border-bottom: 1px solid #ccc
+			&:last-child
+				// margin: 0
+				// padding: 0
+				border: none
+		& > tbody > tr > td
+			display: block
+			flex: 1 1 auto
+			padding: 0
+			border: none
+			&:nth-child(1)
+				display: none
+			&:nth-child(2)
+				width: 100%
+			&:nth-child(3), &:nth-child(4), &:nth-child(5)
+				// width: 100%
+				flex: 0 0 auto
+				margin: 0 20px 0 0
+			&:before
+				content: attr(data-text)
+				color: rgba(0,0,0,0.6)
+			&[data-ctrl]
+				width: 100%
+				margin: 0 -10px
+				padding: 5px 0 0
+		&-number
+			padding: 15px 10px 0
+
+		&-ctrl
+			position: relative
+			opacity: 1
+			visibility: visible
+			padding: 0
+			background: none
+			&:after
+				display: none
+		.ui-number .jq-number__spin
+			opacity: 1
+
+
+
+
+.lk__total
+	padding: 12px 20px 20px
+	background: #FFEBD7
+	margin: 0 0 40px
+	&-text
+		display: block
+		font-size: 20px
+		line-height: 22px
+		font-weight: 500
+		letter-spacing: 0.4px
+		margin: 0 0 14px
+		small
+			display: block
+			font-size: 10px
+			line-height: 12px
+			padding: 5px 0
+			letter-spacing: 0.1px
+			opacity: 0.6
+	.btn
+		min-width: 200px
+
+
+
+
+
+// .lk__table
+// 	width: 100%
+// 	border-collapse: collapse
+
+// .lk__table-item-trigger
+// 	border-bottom: 20px solid #fff
+// 	background-color: #f3f5f7
+// 	box-shadow: inset 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.2)

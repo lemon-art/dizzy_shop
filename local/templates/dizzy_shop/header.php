@@ -10,7 +10,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">
-		
+
 		<title>
 			<?$APPLICATION->ShowTitle();?>
 		</title>
@@ -21,21 +21,22 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 		<meta name="format-detection" content="telephone=no">
 		<!-- remove for production-->
 		<meta name="robots" content="noindex">
-		<?Asset::getInstance()->addCss( SITE_TEMPLATE_PATH . "/css/app.css?v10" ); ?>
-		
+		<?Asset::getInstance()->addCss( "/local/html/dist/css/app.css" ); ?>
+		<?Asset::getInstance()->addCss( SITE_TEMPLATE_PATH . "/css/over.css" ); ?>
+
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	
+
 	<body class="homepage">
 		<div id="panel">
 			<?$APPLICATION->ShowPanel();?>
 		</div>
-		
+
 		<div class="page <?if ( $isMain ):?>home<?else:?>inner<?endif;?>">
-		
+
 			<header class="header" data-header>
 				<div class="header__fix">
 				  <div class="container">
@@ -47,7 +48,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 								</svg>
 							</a>
 						</div>
-						
+
 						<div class="header__phone">
 									<?$APPLICATION->IncludeComponent(
 										"bitrix:main.include",
@@ -60,8 +61,8 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 										)
 									);?>
 						</div>
-						
-						
+
+
 							<?
 							global $USER;
 							$APPLICATION->IncludeComponent(
@@ -83,16 +84,16 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 									"USE_THUMBNAIL_LIST" => "N"
 								)
 							);?>
-						
 
-						  
+
+
 					  <div class="header__like">
 							<?include( $_SERVER["DOCUMENT_ROOT"]."/ajax/top_favorites.php" );?>
 					  </div>
 					  <div class="header__cart">
-						
+
 						<?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.line", "in_header", Array(
-								"PATH_TO_BASKET" => "/personals/cart/", 
+								"PATH_TO_BASKET" => "/personals/cart/",
 								"PATH_TO_PERSONAL" => SITE_DIR."personal/",
 								"SHOW_PERSONAL_LINK" => "N",
 								"SHOW_NUM_PRODUCTS" => "Y",
@@ -102,7 +103,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 							),
 							false
 						);?>
- 
+
 					  </div>
 					  <div class="header__hamburger">
 						<div class="hamburger hamburger--squeeze" js-hamburger-menu><span class="hamburger-box"><span class="hamburger-inner"></span></span></div>
@@ -114,10 +115,10 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 				<div class="navi">
 				  <div class="container">
 					<div class="navi__wrapper">
-					
+
 						<?$APPLICATION->IncludeComponent(
-							"bitrix:menu", 
-							"top", 
+							"bitrix:menu",
+							"top",
 							array(
 								"ROOT_MENU_TYPE" => "top",
 								"MENU_CACHE_TYPE" => "A",
@@ -147,15 +148,15 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 								"VALUE" => ""
 							)
 						);?>
-						
+
 
 					</div>
 				  </div>
 				</div>
-				
+
 						<?$APPLICATION->IncludeComponent(
-							"bitrix:menu", 
-							"drop", 
+							"bitrix:menu",
+							"drop",
 							array(
 								"ROOT_MENU_TYPE" => "top",
 								"MENU_CACHE_TYPE" => "A",
@@ -174,10 +175,10 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 							),
 							false
 						);?>
-				
-				
+
+
 			</header>
-			  
+
 			  <!-- MOBILE NAVI :: START-->
 			<div class="mobile-navi">
 				<div class="mobile-navi__wrapper">
@@ -198,7 +199,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 											"PATH" => "/include/phone.php"
 										)
 									);?>
-					
+
 					</div>
 				  <div class="mobile-navi__socials">
 					<div class="navi-drop__socials-list" data-teleport-target="mobile-socials"></div>
@@ -207,7 +208,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 			  </div>
 			  <!-- HEADER :: END-->
 			  <div class="page__content">
-						
+
 						<?if ( !$isMain ):?>
 							<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", Array(
 								"START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
@@ -217,13 +218,13 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 								false
 							);?>
 						<?endif;?>
-						
-						<?if ( $isPersonal ):?>       
+
+						<?if ( $isPersonal ):?>
 							   <div class="lk">
 								<div class="container">
 						<?endif;?>
-						
-						<?if ( !$isPersonal && !$isCatalog && !$isMain):?>       
+
+						<?if ( !$isPersonal && !$isCatalog && !$isMain):?>
 							<div class="text-page">
 								<div class="container">
 									<h1><?$APPLICATION->ShowTitle(false);?></h1>

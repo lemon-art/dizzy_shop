@@ -3,7 +3,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
 ?>
 
-	<?if ( !$isPersonal && !$isCatalog ):?>       
+	<?if ( !$isPersonal && !$isCatalog ):?>
 			</div>
 		</div>
 					<?$APPLICATION->IncludeComponent(
@@ -20,12 +20,12 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 					);?>
 	<?endif;?>
 
-	<?if ( $isPersonal ):?>   
+	<?if ( $isPersonal ):?>
 
 				<div class="lk__left-sidebar">
 						<?$APPLICATION->IncludeComponent(
-							"bitrix:menu", 
-							"personal_menu", 
+							"bitrix:menu",
+							"personal_menu",
 							array(
 								"ROOT_MENU_TYPE" => "left",
 								"MENU_CACHE_TYPE" => "A",
@@ -44,7 +44,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 							),
 							false
 						);?>
-				</div>	
+				</div>
 				<div class="lk__right-sidebar">
 				  <div class="adv">
 					<div class="adv__item">
@@ -89,7 +89,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 					</div>
 				  </div>
 				</div>
-    
+
 			</div>
         </div>
 	<?endif;?>
@@ -144,8 +144,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                           <use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-location"></use>
                         </svg>
                       </div>
-					  
-					  
+
+
 					  <span>
 						<?$APPLICATION->IncludeComponent(
 							"bitrix:main.include",
@@ -195,13 +195,13 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 											"PATH" => "/include/footer_email.php"
 										)
 									);?>
-					  
+
 					  </span>
                     </div>
                   </div>
                   <div class="col-sm-6 col-lg-12">
                     <div class="footer__head">Мы в социальных сетях</div>
-					
+
 									<?$APPLICATION->IncludeComponent(
 										"bitrix:main.include",
 										"",
@@ -212,8 +212,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 											"PATH" => "/include/footer_social.php"
 										)
 									);?>
-					
-					
+
+
                     <div class="footer__copywrite">
 						<?$APPLICATION->IncludeComponent(
 										"bitrix:main.include",
@@ -236,11 +236,11 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
           </div>
         </div>
       </footer>
-	  
+
 		<!-- FOOTER :: END-->
 		<div class="popup-dialog popup-auth mfp-hide" id="popup-auth">
 			<div class="popup-auth__content">
-		
+
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:system.auth.form",
 					"",
@@ -253,27 +253,25 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 				);?>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="popup-dialog popup-auth mfp-hide" id="popup-reg">
 			<div class="popup-auth__content">
-		
+
 				<?$APPLICATION->IncludeComponent("bitrix:system.auth.registration","",Array());?>
-				
+
 			</div>
 		</div>
-		
+
 		<div class="popup-dialog popup-fast mfp-hide" id="popup-fast">
-		
+
 		</div>
-		
+
       <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-      <script src="<?=SITE_TEMPLATE_PATH?>/js/vendor.js?v10"></script>
-	  <script src="<?=SITE_TEMPLATE_PATH?>/js/utils.js"></script>
-	  <script src="<?=SITE_TEMPLATE_PATH?>/js/validate.js"></script>
-	  <script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
-	  <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.formstyler.js"></script>
-      <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.elevateZoom-3.0.8.min.js"></script>
+      <script src="/local/html/dist/js/vendor.js?v10"></script>
+	  <script src="/local/html/dist/js/utils.js"></script>
+	  <script src="/local/html/dist/js/validate.js"></script>
+	  <script src="/local/html/dist/js/main.js"></script>
 	  <script src="<?=SITE_TEMPLATE_PATH?>/js/script.js"></script>
     </div>
   </body>

@@ -1,0 +1,52 @@
+
+.contact-section
+  margin: 60px 0 0 0
+
+
+.contact-row
+  display: flex
+  margin-bottom: 15px
+  font-size: 13px
+  line-height: 1.2
+  letter-spacing: 0.39px
+
+  &__head
+    flex: 0 0 40%
+    width: 40%
+    color: $colorOrange
+
+  &__el
+
+
+.contact-form
+  &__cta
+    text-align: right
+    padding: 10px 0 0
+
+.contact-map
+  margin: 40px 0 60px 0
+
+#contactMap
+  height: 480px
+
+
++r($desktop)
+  #contactMap
+    height: 420px
+
++r($tablet)
+  .contact-section
+    margin: 40px 0
+  .contact-form
+    max-width: 400px
+    margin-left: auto
+    margin-right: auto
+    // &__cta
+    //   text-align: center
+
+
+  .contact-map
+    margin: 20px -20px -20px -20px
+
+  #contactMap
+    height: 375px

@@ -1,0 +1,560 @@
+// HEADER
+.header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 80px
+  z-index: 99
+  transition: height $transitionSpeed $ease
+  &__fix
+    position: relative
+    z-index: 2
+    transition: background $transitionSpeed $ease
+  &__wrapper
+    display: flex
+    align-items: center
+    // padding: 5px 0
+    color: white
+    transition: all $transitionSpeed $ease
+  &__logo
+    position: relative
+    top: 5px
+    line-height: 1
+    font-size: 71px
+    transition: all $transitionSpeed $ease
+    svg
+      transition: none
+
+  &__phone
+    margin-left: auto
+    font-size: 18px
+    letter-spacing: 0.68px
+
+  &__profile
+    position: relative
+    font-size: 18px
+    letter-spacing: 0.68px
+    &-dropdown
+      position: absolute
+      top: 0px
+      left: 50%
+      margin-left: -25px
+      z-index: 20
+      opacity: 0
+      pointer-events: none
+      transform: translate3d(-50%,20px,0)
+      transition: all $transitionSpeed $ease
+      &-menu
+        position: relative
+        margin-top: 35px
+        width: 200px
+        background: white
+        padding: 20px
+        box-shadow: 0px 3px 8px rgba($fontColor, .4)
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute
+          left: 50%
+          top: -10px
+          transform: translateX(-50%)
+          +arr(12,10,white,t)
+      a
+        display: block
+        font-size: 16px
+        letter-spacing: .48px
+        margin-bottom: 10px
+        color: $fontColor60
+        transition: color $transitionSpeed $ease
+        &:hover
+          color: $fontColor
+      &.is-active
+        opacity: 1
+        pointer-events: all
+        transform: translate3d(-50%,0,0)
+
+  &__like
+    font-size: 25px
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    &:hover
+      color: $colorOrange
+
+  &__cart
+    position: relative
+    font-size: 31px
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    &-counter
+      display: flex
+      justify-content: center
+      align-items: center
+      text-align: center
+      position: absolute
+      bottom: -3px
+      right: -8px
+      min-size: 22px
+      background: $colorOrange
+      border-radius: 50%
+      color: white
+      font-size: 12px
+      font-weight: 700
+      line-height: 1
+    &:hover
+      color: $colorOrange
+
+  &__hamburger
+    display: none
+
+
+  // line
+  &__phone, &__profile, &__like
+    position: relative
+    padding-right: 50px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      right: 25px
+      top: 50%
+      transform: translateY(-50%)
+      width: 2px
+      background: rgba(white, .4)
+      height: 18px
+
+  &--showing-menu
+    .header
+      &__logo
+        color: white
+        margin-right: auto
+      &__phone
+        display: none
+
+  &--showing-menu, &--inner, &--fixed
+    .header
+      &__wrapper
+        color: $fontColor
+
+      &__phone, &__profile
+        color: rgba($fontColor, .7)
+
+      &__phone, &__profile, &__like
+        &::after
+          background: rgba($fontColor, .2)
+
+      &__like
+        color: $fontColor60
+        &:hover
+          color: $colorOrange
+
+      &__cart
+        color: $fontColor60
+        &:hover
+          color: $colorOrange
+
+      &__hamburger
+        .hamburger-inner
+          background-color: $fontColor60
+          &::before, &::after
+            background-color: $fontColor60
+
+  &--fixed
+    background: white
+    height: 60px
+
+    .header
+      &__fix
+        background: #fff
+      &__wrapper
+        padding: 7px 0
+      &__logo
+        top: 0
+        font-size: 45px
+        color: $fontColor
+
+    .navi
+      transform: translateY(-55px)
+      box-shadow: 0px 3px 8px rgba($fontColor, .11)
+
+    .navi-drop
+      display: none
+
+  &--showing-menu
+    position: fixed
+    opacity: 1
+    transform: translate3d(0,0,0)
+
+  &--show-menu
+    .navi
+      background: #F3F5F7
+      transform: translateY(-15px)
+      &--inner
+        background: #F3F5F7
+      &__menu a
+        color: rgba(0, 0, 0, 0.8)
+        transition: color $transitionSpeed $ease
+        &:hover
+          color: $colorOrange
+
+
+  &--inner
+    .header
+      &__fix
+        background: #fff
+      &__logo
+        color: $fontColor
+      &__phone
+        display: inline-block
+
++r($desktop)
+  .header
+    &__logo
+      margin-top: 3px
+      font-size: 63px
+    &__phone
+      font-size: 16px
+    &__profile
+      font-size: 16px
+    &__like
+      display: none
+    &__cart
+      font-size: 25px
+      &-counter
+        min-size: 18px
+        right: -6px
+
++r($tablet)
+  .header
+    &__profile
+      display: none
+
+    &__cart
+      padding-right: 50px
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        right: 25px
+        top: 50%
+        transform: translateY(-50%)
+        width: 2px
+        background: rgba(white, .4)
+        height: 18px
+      &-counter
+        right: 43px
+        bottom: -2px
+
+
+    &__hamburger
+      display: inline-block
+
+    &--fixed, &--showing-menu, &--inner
+      .header
+        &__cart
+          &::after
+            background: rgba($fontColor, .2)
+
++r($mobile)
+  .header
+    &__logo
+      margin-top: 10px
+      font-size: 55px
+    &__cart
+      display: none
+
++r(460)
+  .header
+    &__phone
+      display: none
+    &__hamburger
+      margin-left: auto
+
+    &--inner
+      .header
+        &__phone
+          display: none
+
+
+// NAVI
+.navi
+  position: absolute
+  top: 80px
+  left: 0
+  right: 0
+  z-index: 1
+  background: rgba(#FFEBD7, .2)
+  color: white
+  transition: transform $transitionSpeed $ease, box-shadow $transitionSpeed $ease
+
+  &--inner
+    // position: static
+    background: #F3F5F7
+    color: rgba($fontColor, .8)
+    box-shadow: 0px 3px 8px rgba($fontColor, .11)
+
+    .navi
+      &__search
+        button
+          .icon
+            filter: invert(1)
+        input
+          color: $fontColor
+          &::placeholder
+            color: $fontColor60
+  &__wrapper
+    display: flex
+    align-items: center
+    height: 40px
+    font-size: 18px
+    letter-spacing: 0.68px
+
+  &__menu
+    flex: 1 1 auto
+    display: flex
+    align-items: center
+    list-style: none
+    margin: 0 100px 0 0
+    padding: 0
+    height: 100%
+    li
+      height: 100%
+      flex: 1 0 auto
+      transition: all $transitionSpeed $ease
+      &:hover
+        color: $colorOrange
+    a
+      display: flex
+      align-items: center
+      height: 100%
+
+  &__search
+    flex: 0 0 80px
+    margin-left: auto
+    transition: all $transitionSpeed $ease
+    &-form
+      position: relative
+      display: flex
+      align-items: center
+      .icon
+        font-size: 16px
+      button, input
+        -webkit-apperance: none
+        background: transparent
+        border: 1px solid transparent
+        box-shadow: none
+
+      button
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        transition: all $transitionSpeed $ease
+        &:hover
+          opacity: .8
+
+      input
+        width: 60px
+        color: white
+        font-size: 18px
+        transition: all $transitionSpeed $ease
+        &::placeholder
+          color: white
+
+    &.is-active
+      flex-basis: 100%
+      width: 100%
+      .navi__search-form
+        border-bottom: 1px solid $colorOrange
+      input
+        width: 220px
+
+
+
++r($desktop)
+  .navi
+    &__wrapper
+      font-size: 15px
+    &__menu
+      margin: 0 60px 0 0
+
++r($tablet)
+  .navi
+    display: none
+
+.navi-drop
+  position: absolute
+  left: 0
+  right: 0
+  top: 120px
+  z-index: 31
+  padding: 20px 0
+  background: #FFFFFF
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.20)
+  opacity: 0
+  pointer-events: none
+  transform: translate3d(0,30px,0)
+  transition: all $transitionSpeed $ease
+  &.is-active
+    opacity: 1
+    pointer-events: all
+    transform: translate3d(0,0,0)
+
+  &__menu
+    max-width: 600px
+
+  &__icon
+    font-size: 40px
+    color: rgba($fontColor, .2)
+
+  &__name
+    margin-top: 15px
+    margin-bottom: 10px
+    font-size: 20px
+    font-weight: 700
+    letter-spacing: 0.6px
+
+  &__links
+    a
+      display: block
+      font-size: 13px
+      line-height: 1.4
+      color: $fontColor60
+      transition: all $transitionSpeed $ease
+
+      &:hover
+        color: $fontColor
+
+  &__socials
+    margin-top: 45px
+    color: $fontColor60
+    &-title
+      font-size: 13px
+      line-height: 1.4
+
+    &-list
+      margin-top: 15px
+      display: flex
+      align-items: center
+      a
+        display: inline-block
+        margin-right: 20px
+        transition: all $transitionSpeed $ease
+
+        .ico
+          &-social-vk
+            font-size: 12px
+          &-social-fb
+            font-size: 20px
+          &-social-ok
+            font-size: 20px
+
+        &:hover
+          .ico
+            &-social-vk
+              color: $vk
+            &-social-fb
+              color: $facebook
+            &-social-ok
+              color: #ED812B
+
+  &-card
+    flex: 1 1 auto
+    position: relative
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    padding: 20px
+    &__image
+      position: absolute
+      z-index: 1
+      top: 50%
+      left: 50%
+      transform: translate3d(-50%,-50%,0)
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+
+    &__name
+      position: relative
+      z-index: 2
+      margin-top: auto
+      color: white
+      font-size: 16px
+
+
++rmin($tablet)
+  .mobile-navi
+    display: none !important
+
+// MOBILE NAVI
+.mobile-navi
+  position: fixed
+  z-index: 29
+  background: white
+  top: 0
+  bottom: 0
+  right: 0
+  min-width: 280px
+  display: flex
+  flex-direction: column
+  box-shadow: 0px 5px 20px rgba($fontColor, .3)
+  opacity: 0
+  pointer-events: none
+  transform: translate3d(100%,0,0)
+  transition: all $transitionSpeed $ease
+  &.is-active
+    opacity: 1
+    pointer-events: all
+    transform: translate3d(0,0,0)
+
+
+  &__wrapper
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    padding: 0 40px
+    overflow-y: auto
+
+  &__menu
+    list-style: none
+    margin: 0 0 0 0
+    padding: 120px 0 10px 0
+    li
+      display: block
+      font-size: 18px
+      font-weight: 700
+      margin-bottom: 20px
+      color: $fontColor60
+      transition: all $transitionSpeed $ease
+      &:hover
+        color: $colorOrange
+
+  &__search
+    color: $fontColor60
+    width: 100%
+    margin-bottom: auto
+    margin-left: -5px
+    .navi__search-form
+      button
+        filter: invert(1)
+      input
+        width: 100%
+        color: $fontColor
+        &::placeholder
+          color: $fontColor60
+
+  &__phone
+    margin-top: 30px
+    text-align: center
+    font-size: 18px
+    font-weight: 700
+
+  &__socials
+    margin-top: 20px
+    padding-bottom: 40px
+    color: $fontColor60
+    text-align: center
+    .navi-drop__socials-list
+      justify-content: center

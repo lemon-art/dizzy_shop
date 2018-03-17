@@ -1,0 +1,135 @@
+
+.discount
+  margin: 95px 0 75px 0
+  padding: 5px 0
+  background: $colorOrange
+  color: white
+  &:last-child
+    margin-bottom: 0
+  &--bottom
+    margin-bottom: 0
+  &__wrapper
+    position: relative
+    display: flex
+
+  &__percent
+    font-size: 146px
+    font-weight: 900
+
+  &__words
+    font-size: 32px
+    letter-spacing: 0.96px
+
+  &__socials
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    z-index: 3
+    transform: translateY(-50%)
+
+  &__social
+    position: relative
+    background: white
+    size: 90px
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: background $transitionSpeed $ease
+    &::before
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      left: -30px
+      display: inline-block
+      content: ' '
+      +arr(16,13,white,r)
+    .ico
+      &-social-vk
+        color: $vk
+        font-size: 29px
+      &-social-fb
+        color: $facebook
+        font-size: 50px
+      &-social-ok
+        color: #ED812B
+        font-size: 49px
+    &:hover
+      .ico
+        color: white
+
+    &--vk
+      &:hover
+        background-color: $vk
+    &--fb
+      &:hover
+        background-color: $facebook
+    &--ok
+      &:hover
+        background-color: #ED812B
+
+  &__image
+    font-size: 0
+    position: absolute
+    left: 50%
+    bottom: -5px
+    z-index: 2
+    transform: translateX(-50%)
+
++r($wide)
+  .discount
+    margin-top: 130px
+    &__percent
+      font-size: 120px
+    &__words
+      font-size: 28px
+      padding-right: 20px
+    &__social
+      size: 80px
+      &:first-child
+        &::before
+          display: none
+
+      .ico
+        transform: scale(.85)
+
++r($desktop)
+  .discount
+    &__percent
+      font-size: 105px
+    &__words
+      font-size: 24px
+    &__social
+      size: 70px
+      &::before
+        display: none
+      .ico
+        transform: scale(.75)
+
++r($tablet)
+  .discount
+    margin: 50px 0
+    &--bottom
+      margin-bottom: 0
+    &__socials
+      max-width: 300px
+      margin-left: auto
+      margin-right: auto
+      position: static
+      transform: none
+      padding: 20px 0
+
+    &__image
+      left: auto
+      right: 0
+      z-index: -1
+      // bottom: 0px
+      transform: none
+
++r($mobile)
+  .discount
+    text-align: center
