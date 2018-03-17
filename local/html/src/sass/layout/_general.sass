@@ -29,6 +29,11 @@ body, html
 .page
   display: flex
   flex-direction: column
+  &.inner
+    .page__content
+      padding-top: 120px
+      +r($tablet)
+        padding-top: 80px
   &__content
     flex: 1 1 auto
 

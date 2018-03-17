@@ -109,7 +109,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 </div>
       <!-- FOOTER :: START-->
-      <footer class="footer" js-reveal-footer>
+      <footer class="footer">
         <div class="footer__top">
           <div class="container">
             <div class="row">

@@ -37,7 +37,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 
 		<div class="page <?if ( $isMain ):?>home<?else:?>inner<?endif;?>">
 
-			<header class="header" data-header>
+			<header class="header<?php if (!$isMain) {?> header--inner<?php } ?>" data-header>
 				<div class="header__fix">
 				  <div class="container">
 					<div class="header__wrapper">
@@ -112,7 +112,7 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 				  </div>
 				</div>
 				<!-- NAVI :: START-->
-				<div class="navi">
+				<div class="navi<?php if (!$isMain) {?> navi--inner<?php } ?>">
 				  <div class="container">
 					<div class="navi__wrapper">
 
