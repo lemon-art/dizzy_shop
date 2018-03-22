@@ -268,10 +268,10 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 		</div>
 
       <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-      <script src="/local/html/dist/js/vendor.js?v10"></script>
-	  <script src="/local/html/dist/js/utils.js"></script>
-	  <script src="/local/html/dist/js/validate.js"></script>
-	  <script src="/local/html/dist/js/main.js"></script>
+      <script src="/local/html/src/js/vendor.js?v10"></script>
+	  <script src="/local/html/src/js/utils.js"></script>
+	  <script src="/local/html/src/js/validate.js"></script>
+	  <script src="/local/html/src/js/main.js"></script>
 	  <script src="<?=SITE_TEMPLATE_PATH?>/js/script.js"></script>
     </div>
   </body>

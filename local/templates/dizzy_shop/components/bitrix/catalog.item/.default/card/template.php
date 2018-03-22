@@ -22,11 +22,6 @@ use \Bitrix\Main\Localization\Loc;
  */
 ?>
 
-<div style="display: none;">
-<pre>
-<?print_r( $item["OFFERS"] );?>
-</pre>
-</div>
 
 
 
@@ -66,7 +61,7 @@ use \Bitrix\Main\Localization\Loc;
 							</a>
 							*/?>
 							<?foreach ($morePhoto as $key => $photo):?>
-								<a class="c-card__thumb" href="#">
+								<a class="c-card__thumb" href="<?=$item['DETAIL_PAGE_URL']?>">
 									<img src="<?=$photo['SLIDER']?>" srcset="<?=$photo['SLIDER_BIG']?>">
 								</a>
 							<?endforeach;?>
