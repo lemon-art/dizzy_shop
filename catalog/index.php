@@ -3,8 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Каталог");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog",
-	".default",
+	"bitrix:catalog", 
+	".default", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "4",
@@ -66,6 +66,7 @@ $APPLICATION->SetPageProperty("title", "Каталог");
 		"USE_COMPARE" => "N",
 		"PRICE_CODE" => array(
 			0 => "Розница",
+			1 => "Скидка -10%",
 		),
 		"USE_PRICE_COUNT" => "N",
 		"SHOW_PRICE_COUNT" => "1",

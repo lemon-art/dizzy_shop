@@ -196,10 +196,19 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 		{
 			$componentElementParams['USER_CONSENT_IS_LOADED'] = $arParams['USER_CONSENT_IS_LOADED'];
 		}
-
+		
+		$template = "";
+		global $USER;
+		$groupID = 9; # ID группы оптовиков
+ 
+		if (in_array($groupID,$USER->GetUserGroupArray())){
+			$template = "opt";
+		}
+		
+		
 		$elementId = $APPLICATION->IncludeComponent(
 			'bitrix:catalog.element',
-			'',
+			$template,
 			$componentElementParams,
 			$component
 		);
