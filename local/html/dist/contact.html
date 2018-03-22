@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Контакты</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff">
+    <meta name="format-detection" content="telephone=no">
+    <!-- remove for production-->
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" media="all" href="css/app.css"><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <div class="page inner">
+      <!-- HEADER :: START-->
+      <header class="header" data-header>
+        <div class="header__fix">
+          <div class="container">
+            <div class="header__wrapper">
+              <div class="header__logo"><a class="logo" href="/homepage.html">
+                  <svg class="ico ico-logo">
+                    <use xlink:href="img/sprite.svg#ico-logo"></use>
+                  </svg></a></div>
+              <div class="header__phone"><a class="h-link" href="tel:+74956451010">+7 (495) 645 10 10</a></div>
+              <div class="header__profile"><span>Личный кабинет</span>
+                <div class="header__profile-dropdown">
+                  <div class="header__profile-dropdown-menu"><a href="#" data-mfp-src="#popup-auth" js-popup>Вход</a><a href="#">Регистрация</a></div>
+                </div>
+              </div>
+              <div class="header__like">
+                <svg class="ico ico-like">
+                  <use xlink:href="img/sprite.svg#ico-like"></use>
+                </svg>
+              </div>
+              <div class="header__cart">
+                <svg class="ico ico-cart">
+                  <use xlink:href="img/sprite.svg#ico-cart"></use>
+                </svg>
+                <div class="header__cart-counter"><span>3</span></div>
+              </div>
+              <div class="header__hamburger">
+                <div class="hamburger hamburger--squeeze" js-hamburger-menu><span class="hamburger-box"><span class="hamburger-inner"></span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- NAVI :: START-->
+        <div class="navi">
+          <div class="container">
+            <div class="navi__wrapper">
+              <ul class="navi__menu" js-teleport data-teleport-to="mobile-menu" data-teleport-condition="&lt;768">
+                <li><a class="js-navi-drop" href="catalog.html" js-navi-drop data-for="catalog">Каталог</a></li>
+                <li><a href="collections.html">Коллекции</a></li>
+                <li><a href="#">Условия работы</a></li>
+                <li><a href="delivery.html">Доставка и оплата</a></li>
+                <li><a href="about.html">О компании</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+              </ul>
+              <div class="navi__search" js-teleport data-teleport-to="mobile-search" data-teleport-condition="&lt;768">
+                <form class="navi__search-form" action="#" js-header-search>
+                  <button type="submit"><i class="icon icon-search"></i></button>
+                  <input type="text" placeholder="Поиск">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DROPDOWN :: START-->
+        <div class="navi-drop" data-drop="catalog">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="row navi-drop__menu">
+                  <div class="col">
+                    <div class="navi-drop__icon">
+                      <svg class="ico ico-snow">
+                        <use xlink:href="img/sprite.svg#ico-snow"></use>
+                      </svg>
+                    </div>
+                    <div class="navi-drop__name">Зима</div>
+                    <div class="navi-drop__links"><a href="#">Пальто</a><a href="#">Куртки / Парки</a><a href="#">Юбки / Брюки</a><a href="#">Аксессуары</a></div>
+                  </div>
+                  <!-- col-->
+                  <div class="col">
+                    <div class="navi-drop__icon">
+                      <svg class="ico ico-rain">
+                        <use xlink:href="img/sprite.svg#ico-rain"></use>
+                      </svg>
+                    </div>
+                    <div class="navi-drop__name">Осень/Весна</div>
+                    <div class="navi-drop__links"><a href="#">Плащи утепленные</a><a href="#">Куртки / Парки</a><a href="#">Пальто демисезонные</a><a href="#">Плащи / Ветровки</a><a href="#">Аксессуары</a></div>
+                  </div>
+                  <!--col-->
+                  <div class="col">
+                    <div class="navi-drop__icon">
+                      <svg class="ico ico-sun">
+                        <use xlink:href="img/sprite.svg#ico-sun"></use>
+                      </svg>
+                    </div>
+                    <div class="navi-drop__name">Лето</div>
+                    <div class="navi-drop__links"><a href="#">Платья / Комбинезоны</a><a href="#">Блузы / Жакеты</a><a href="#">Юбки</a><a href="#">Брюки</a></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="navi-drop__socials">
+                      <div class="navi-drop__socials-title">Мы в социальных сетях</div>
+                      <div class="navi-drop__socials-list" js-teleport data-teleport-to="mobile-socials" data-teleport-condition="&lt;768"><a href="#" target="_blank">
+                          <svg class="ico ico-social-vk">
+                            <use xlink:href="img/sprite.svg#ico-social-vk"></use>
+                          </svg></a><a href="#" target="_blank">
+                          <svg class="ico ico-social-fb">
+                            <use xlink:href="img/sprite.svg#ico-social-fb"></use>
+                          </svg></a><a href="#" target="_blank">
+                          <svg class="ico ico-social-ok">
+                            <use xlink:href="img/sprite.svg#ico-social-ok"></use>
+                          </svg></a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- col last-->
+              <div class="col-md-4 col-grow-child">
+                <div class="navi-drop-card"><img class="navi-drop-card__image" src="img/dropdownImg.jpg" srcset="img/dropdownImg@2x.jpg 2x">
+                  <div class="navi-drop-card__name">Куртка «Жасмин»</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- MOBILE NAVI :: START-->
+      <div class="mobile-navi">
+        <div class="mobile-navi__wrapper">
+          <ul class="mobile-navi__menu" data-teleport-target="mobile-menu">
+            <!-- teleported content-->
+          </ul>
+          <div class="mobile-navi__search" data-teleport-target="mobile-search">
+            <!-- teleported-->
+          </div>
+          <div class="mobile-navi__phone"><a class="h-link" href="tel:+74956451010">+7 (495) 645 10 10</a></div>
+          <div class="mobile-navi__socials">
+            <div class="navi-drop__socials-list" data-teleport-target="mobile-socials"></div>
+          </div>
+        </div>
+      </div>
+      <!-- HEADER :: END-->
+      <div class="page__content">
+        <!-- BREADCRUMBS :: START-->
+        <div class="breadcrumbs">
+          <div class="container"><a href="homepage.html">Главная</a><a href="#">Текущий пункт</a></div>
+        </div>
+        <!-- TEXT PAGE :: START-->
+        <div class="text-page text-page--no-pad">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="text-page__title">Контакты</div>
+                <div class="contact-section">
+                  <div class="contact-row">
+                    <div class="contact-row__head">Адрес:</div>
+                    <div class="contact-row__el">111024, г. Москва, ул.Авиамоторная, д.44, стр.1 (м.Авиамоторная) (территория бывшего  таксомоторного парка).</div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row__head">Телефоны:</div>
+                    <div class="contact-row__el">+7 (495) 647-89-01 (многоканальный), <br>+7 (495) 796-06-05</div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row__head">Факс:</div>
+                    <div class="contact-row__el">8(495) 647-8901 (доб.104)</div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row__head">E-mail:</div>
+                    <div class="contact-row__el">sales@diway.ru</div>
+                  </div>
+                  <div class="contact-row">
+                    <div class="contact-row__head">Режим работы:</div>
+                    <div class="contact-row__el">пн-пт с 10:00-18:00 <br> сб с 10:00-17:00 <br> вс выходной</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="text-page__title">Обратная связь</div>
+                <div class="contact-section">
+                  <form class="contact-form" action="#" js-validate-contact>
+                    <div class="ui-group">
+                      <label class="ui-label">Имя</label>
+                      <input class="ui-input" type="text" name="name">
+                    </div>
+                    <div class="ui-group">
+                      <label class="ui-label">E-mail</label>
+                      <input class="ui-input" type="email" name="email">
+                    </div>
+                    <div class="ui-group">
+                      <label class="ui-label">Заголовок</label>
+                      <input class="ui-input" type="text" name="title">
+                    </div>
+                    <div class="ui-group">
+                      <label class="ui-label">Сообщение</label>
+                      <textarea class="ui-textarea js-autoExpand" type="text" name="message" rows="5" data-min-rows="5"></textarea>
+                    </div>
+                    <div class="contact-form__cta">
+                      <button class="btn btn-primary" type="submit"><span>Отправить</span></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+                <!-- DISCOUNT :: START-->
+                <div class="discount discount--bottom">
+                  <div class="container">
+                    <div class="row align-items-center">
+                      <div class="col-sm-6 col-md-4">
+                        <div class="discount__percent">-20%</div>
+                      </div>
+                      <div class="col-sm-6 col-md-4">
+                        <div class="discount__words">Для всех зарегистрированных <br>в социальных сетях</div>
+                      </div>
+                      <div class="col-md-4 align-self-stretch">
+                        <div class="discount__socials"><a class="discount__social discount__social--vk" href="#">
+                            <svg class="ico ico-social-vk">
+                              <use xlink:href="img/sprite.svg#ico-social-vk"></use>
+                            </svg></a><a class="discount__social discount__social--fb" href="#">
+                            <svg class="ico ico-social-fb">
+                              <use xlink:href="img/sprite.svg#ico-social-fb"></use>
+                            </svg></a><a class="discount__social discount__social--ok" href="#">
+                            <svg class="ico ico-social-ok">
+                              <use xlink:href="img/sprite.svg#ico-social-ok"></use>
+                            </svg></a></div>
+                        <div class="discount__image"><img src="img/discountBg.png" srcset="img/discountBg@2x.png 2x"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div>
+      <!-- FOOTER :: START-->
+      <footer class="footer" js-reveal-footer>
+        <div class="footer__top">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <div class="footer__head">О компании</div>
+                <div class="footer__links"><a href="#">О компании	</a><a href="#">Наши сотрудники</a><a href="#">Дипломы и награды</a><a href="#">Благотворительность</a><a href="#">Обратная связь</a></div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="footer__head">Полезная <br>информация</div>
+                <div class="footer__links"><a href="#">Размерная сетка</a><a href="#">Используемые материалы </a><a href="#">Уход за одеждой.</a></div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="footer__head">Новости/<br>Акции</div>
+                <div class="footer__links"><a href="#">Новости</a><a href="#">Акции</a></div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="footer__head">Магазины</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-sm-6 col-lg-12">
+                    <div class="footer__head">Контакты</div>
+                    <div class="footer__contact-row">
+                      <div class="footer__icon">
+                        <svg class="ico ico-location">
+                          <use xlink:href="img/sprite.svg#ico-location"></use>
+                        </svg>
+                      </div><span>111024, г. Москва, ул.Авиамоторная, д.44, стр.1 <br> (м.Авиамоторная) (территория бывшего  таксомоторного парка).</span>
+                    </div>
+                    <div class="footer__contact-row">
+                      <div class="footer__icon">
+                        <svg class="ico ico-phone">
+                          <use xlink:href="img/sprite.svg#ico-phone"></use>
+                        </svg>
+                      </div><span><a href="tel:+74956478901">+7 (495) 647-89-01</a> (многоканальный), <br> <a href="tel:+74957960605">+7 (495) 796-06-05</a></span>
+                    </div>
+                    <div class="footer__contact-row">
+                      <div class="footer__icon">
+                        <svg class="ico ico-mail">
+                          <use xlink:href="img/sprite.svg#ico-mail"></use>
+                        </svg>
+                      </div><span><a href="mailto:sales@diway.ru">sales@diway.ru</a></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-12">
+                    <div class="footer__head">Мы в социальных сетях</div><a class="footer__social" href="#" target="_blank">
+                      <div class="footer__icon">
+                        <svg class="ico ico-social-vk">
+                          <use xlink:href="img/sprite.svg#ico-social-vk"></use>
+                        </svg>
+                      </div><span>Vkontakte</span></a><a class="footer__social" href="#" target="_blank">
+                      <div class="footer__icon">
+                        <svg class="ico ico-social-fb">
+                          <use xlink:href="img/sprite.svg#ico-social-fb"></use>
+                        </svg>
+                      </div><span>Facebook  </span></a><a class="footer__social" href="#" target="_blank">
+                      <div class="footer__icon">
+                        <svg class="ico ico-social-ok">
+                          <use xlink:href="img/sprite.svg#ico-social-ok"></use>
+                        </svg>
+                      </div><span>Odnoklassniki  </span></a><a class="footer__social" href="#" target="_blank">
+                      <div class="footer__icon"><i class="icon icon-social-insta"></i></div><span>Instagram  </span></a>
+                    <div class="footer__copywrite">Copyright © 2017 www.diway.ru</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-grow-child">
+                <div class="footer__map" id="footerMap"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- FOOTER :: END-->
+      <div class="popup-dialog popup-auth mfp-hide" id="popup-auth">
+        <div class="popup-auth__content">
+          <div class="lk__heading">Вход</div>
+          <form class="lk__form popup-auth__form">
+            <div class="ui-group">
+              <label class="ui-label">Email</label>
+              <input class="ui-input" type="email" name="email" placeholder="Введите email">
+            </div>
+            <div class="ui-group">
+              <label class="ui-label">Пароль</label>
+              <input class="ui-input" type="password" name="password" placeholder="Введите пароль">
+            </div>
+            <div class="ui-group">
+              <div class="popup-auth__link"><a href="#">Забыли пароль?</a></div>
+            </div>
+            <div class="popup-auth__submit">
+              <div class="popup-auth__submit-item">
+                <button class="btn btn-primary btn-primary_gray"><span>Регистрация</span></button>
+              </div>
+              <div class="popup-auth__submit-item">
+                <button class="btn btn-primary"><span>Войти</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+      <script src="js/vendor.js"></script>
+      <script src="js/app.js"></script>
+    </div>
+  </body>
+</html>
