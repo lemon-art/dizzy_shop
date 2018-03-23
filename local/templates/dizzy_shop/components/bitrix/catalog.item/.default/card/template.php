@@ -48,7 +48,7 @@ use \Bitrix\Main\Localization\Loc;
 							</a>
 							*/?>
 							<?foreach ($morePhoto as $key => $photo):?>
-								<a class="c-card__image" href="#">
+								<a class="c-card__image" href="<?=$item['DETAIL_PAGE_URL']?>">
 									<img src="<?=$photo['SRC']?>" srcset="<?=$photo['BIG']?>">
 								</a>
 							<?endforeach;?>
@@ -61,7 +61,7 @@ use \Bitrix\Main\Localization\Loc;
 							</a>
 							*/?>
 							<?foreach ($morePhoto as $key => $photo):?>
-								<a class="c-card__thumb" href="<?=$item['DETAIL_PAGE_URL']?>">
+								<a class="c-card__thumb" href="#">
 									<img src="<?=$photo['SLIDER']?>" srcset="<?=$photo['SLIDER_BIG']?>">
 								</a>
 							<?endforeach;?>

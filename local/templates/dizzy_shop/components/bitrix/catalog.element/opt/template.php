@@ -284,8 +284,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 				
 				
 				<div class="card__size">
-								  <p class="card__size-text">Цвет/Размер:</p>
-								  
+								  								  
 								  <a class="card__size-link" href="#" data-mfp-src="#popup-sizes" js-popup>
 									<svg class="ico ico-size">
 									  <use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-size"></use>
@@ -294,6 +293,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
 								
 								<div class="table-size-scroll">
+									<form>
 									<table class="table-size">
 									  <thead>
 										<tr>
@@ -307,13 +307,13 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 										<?foreach ( $arResult['COLORS'] as $idColor => $nameColor ):?>
 										
 											<tr>
-												<td style="background: url(<?=$arResult['COLORS_BG'][$idColor]?>);">
+												<td class="bg-class" style="background: url(<?=$arResult['COLORS_BG'][$idColor]?>);">
 													<span class="is-hide_mobile-s"><?=$nameColor?></span>
 												</td>
 												<?foreach ( $arResult['SIZES'] as $idSize => $valSize ):?>
 													<?if ( is_array($arResult['SKU_TABLE'][$idColor][$idSize]) ):?>
 														<td class="is-has">
-															<input type="text" max="<?=$arResult['SKU_TABLE'][$idColor][$idSize]['QUANTITY']?>" data-id="<?=$arResult['SKU_TABLE'][$idColor][$idSize]['OFFER_ID']?>">
+															<input type="text" data-max="<?=$arResult['SKU_TABLE'][$idColor][$idSize]['QUANTITY']?>" name="prod_<?=$arResult['SKU_TABLE'][$idColor][$idSize]['OFFER_ID']?>">
 														</td>
 													<?else:?>
 														<td> - </td>
@@ -324,13 +324,17 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 										<?endforeach;?>
 									  </tbody>
 									</table>
+									</form>
 								  </div>
 								
 							</div>
-				
+				<div id="error_table" style="display: none;">Заполните таблицу с заказом!</div>
                 <div class="card__ctrl" data-entity="main-button-container">
+				
+					
+				
 					<div id="<?=$itemIds['BASKET_ACTIONS_ID']?>"> 
-						<a class="btn btn-primary <?=$showButtonClassName?> add-to-cart" href="javascript:void(0);" id="<?=$itemIds['ADD_BASKET_LINK']?>">
+						<a class="btn btn-primary <?=$showButtonClassName?> add-to-cart-opt" href="javascript:void(0);" id="<?=$itemIds['ADD_BASKET_LINK']?>">
 							<span>Добавить в корзину</span>
 						</a>
 					</div>

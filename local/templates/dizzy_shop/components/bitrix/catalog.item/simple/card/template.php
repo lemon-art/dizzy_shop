@@ -25,7 +25,7 @@ use \Bitrix\Main\Localization\Loc;
 
 
 							<div class="slider-card">
-								<a class="slider-card__image" href="#">
+								<a class="slider-card__image" href="<?=$item['DETAIL_PAGE_URL']?>">
 									<?$file = CFile::ResizeImageGet($item['DETAIL_PICTURE']["ID"], array('width'=>220, 'height'=>330), BX_RESIZE_IMAGE_PROPORTIONAL, true);?>
 									<img src="<?=$file['src']?>">
 								</a>

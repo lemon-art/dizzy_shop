@@ -100,7 +100,79 @@ $(document).ready(function() {
 
 	});
 
+	//положить в корзину опт
+	 $(document).on('click', '.add-to-cart-opt', function(e) {
 
+			elButton = $(this);
+			
+			if ( elButton.hasClass('added') ){
+				window.location = "/personal/cart/";
+			}
+			else {
+				$('#error_table').hide();
+				var makeOrder = 0;
+				$(".table-size input").each(function (index, el){
+
+					var v  = parseInt($(el).val());
+					if ( v > 0 ){
+						makeOrder = 1;
+					}
+				});
+				
+				if ( makeOrder ){
+				
+					form = $('.table-size-scroll').find('form');
+					$.post("/ajax/add_to_cart_opt.php", form.serialize(),
+						function(data){
+							
+							elButton.addClass('added').find('span').text('Добавлено в корзину');
+							
+							$.post("/ajax/top_basket.php", {},
+							  function(data){
+								$('.header__cart').html( data );
+							});
+
+					});
+				
+				
+				}
+				else {
+					$('#error_table').show();
+				}
+			}
+
+			return false;
+
+
+	});
+	
+	//проверка полей оптового заказа
+	$(document).on('change', '.table-size input', function() {
+
+		$('#error_table').hide();
+		el = $(this);
+		var v    = parseInt($(el).val());
+		var max  = parseInt($(el).data('max'));
+		
+		if (!isNaN(parseFloat(v))){
+			if ( v > max ){
+				$(el).val(max);
+			}
+
+			if ( v < 0 ){
+				$(el).val('0');
+			}
+		}
+		else {
+			$(el).val('');
+		}
+		
+		return false;
+
+
+	});
+		
+		
 	//добавление в избранное товара
   $(document).on('click', '.btn-like', function(e) {
 
