@@ -91,7 +91,7 @@ use \Bitrix\Main\Localization\Loc;
 						<?echo implode($arSizes, ', ');?> 
 					</div>
                       
-					<button class="c-card__view fast_view" data-mfp-src="/ajax/fast_element.php?is_ajax=y&ELEMENT_ID=<?=$item['ID']?>">
+					<button class="c-card__view fast_view" data-mfp-src="/ajax/fast_element.php?ELEMENT_ID=<?=$item['ID']?>">
 						Быстрый просмотр
                         
 						<svg class="ico ico-eye">

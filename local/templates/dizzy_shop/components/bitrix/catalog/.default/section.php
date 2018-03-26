@@ -75,7 +75,18 @@ if ($isFilter)
 				<div class="catalog__wrapper">
 					<div class="catalog__sidebar">
 					
+					
 						<?
+						$template = "";
+						global $USER;
+						$groupID = 9; # ID группы оптовиков
+					 
+						if (in_array($groupID,$USER->GetUserGroupArray())){
+							unset( $arParams["PRICE_CODE"][0] );
+						}
+						
+						
+						
 						$APPLICATION->IncludeComponent(
 							"bitrix:catalog.smart.filter",
 							"",

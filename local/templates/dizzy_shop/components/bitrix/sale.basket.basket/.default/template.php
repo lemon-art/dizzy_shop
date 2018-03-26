@@ -291,7 +291,10 @@ if (empty($arResult['ERROR_MESSAGE']))
 }
 else
 {
-	ShowError($arResult['ERROR_MESSAGE']);
+
+	global $newOrder;
+	if ( !$newOrder )
+		ShowError($arResult['ERROR_MESSAGE']);
 }
 ?>
 

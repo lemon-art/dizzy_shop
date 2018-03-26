@@ -167,6 +167,30 @@ $(document).ready(function() {
 			$(el).val('');
 		}
 		
+		
+		if ( el.hasClass('in_cart') ){
+		
+			var id_basket = el.data('id');
+			var product_id = el.data('product_id');
+			var quantity = el.val();
+
+			$.post("/ajax/basket_quant.php", { id_basket: id_basket, product_id: product_id, quantity: quantity },
+			  function(data){
+
+						$.post("/personal/cart/?is_ajax=y", {},
+						  function(data){
+							$('#basket_bx').html( data );
+						});
+
+						$.post("/ajax/top_basket.php", {},
+						  function(data){
+							$('.header__cart').html( data );
+							BX.closeWait('basket_bx', wait);
+						});
+
+			});
+		}
+		
 		return false;
 
 

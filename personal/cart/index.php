@@ -1,6 +1,13 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Корзина");
+$template = "";
+global $USER;
+$groupID = 9; # ID группы оптовиков
+ 
+if (in_array($groupID,$USER->GetUserGroupArray())){
+	$template = "opt";
+}
 ?>
 
 
@@ -84,7 +91,7 @@ $APPLICATION->SetTitle("Корзина");
 <span id="basket_bx">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket",
-	"",
+	$template,
 	Array(
 		"ACTION_VARIABLE" => "basketAction",
 		"ADDITIONAL_PICT_PROP_2" => "-",

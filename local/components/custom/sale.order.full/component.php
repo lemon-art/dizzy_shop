@@ -293,6 +293,8 @@ if ( is_array( $arResult["POST"] ) ){
 			//физлицо
 			$newEmail = $arResult["POST"]["ORDER_PROP_2"];
 			$newName  = $arResult["POST"]["ORDER_PROP_1"];
+			$newPhone = $arResult["POST"]["ORDER_PROP_3"];
+			$newStreet = $arResult["POST"]["ORDER_PROP_7"];
 		}
 		else {
 			//юрлицо
@@ -310,9 +312,20 @@ if ( is_array( $arResult["POST"] ) ){
 		$newPassword = randString($password_min_length, $password_chars);
 		$arAuthResult = $USER->Register($newLogin, $newName, '', $newPassword, $newPassword, $newEmail, LANG);
 		
+		
+		
+		
 		if ($arAuthResult != False && $arAuthResult["TYPE"] == "ERROR")
 			$arResult["ERROR_MESSAGE"] .= GetMessage("STOF_ERROR_REG").((strlen($arAuthResult["MESSAGE"]) > 0) ? ": ".$arAuthResult["MESSAGE"] : ".<br />" );
-				
+		
+		$userU = new CUser;
+		$fields = Array(
+		  "PERSONAL_PHONE"    => $newPhone,
+		  "PERSONAL_STREET"   => $newStreet
+		);
+		$userU->Update(IntVal($USER->GetID()), $fields);
+		
+		
 		$arAuthResult = $USER->Login($newLogin, $newPassword, "N");
 		if ($arAuthResult != False && $arAuthResult["TYPE"] == "ERROR")
 			$arResult["ERROR_MESSAGE"] .= GetMessage("STOF_ERROR_REG").((strlen($arAuthResult["MESSAGE"]) > 0) ? ": ".$arAuthResult["MESSAGE"] : ".<br />" );

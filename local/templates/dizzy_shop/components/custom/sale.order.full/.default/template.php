@@ -1,6 +1,14 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
 <?if ( $arResult["ORDER_ID"] ):?>
+
+	<?
+	global $newOrder;
+	$newOrder = true;
+	?>
+
+	<div class="lk__content">
+
       <div class="content__wrap content__wrap_cart">
         <div class="content__container content__container_ordered">
           <div class="content-ordered">
@@ -8,6 +16,9 @@
             <p class="content-ordered__text">В ближайшее время наш менеджер свяжется с вами<br>для уточнения деталей оплаты и доставки.</p>
             <p class="content-ordered__text">Спасибо, что выбрали нас.</p>
             <a href="/" class="content-cart__back content-ordered__back">Вернуться на главную</a>
+		</div>
+		</div>
+		</div>
 
 <?else:?>
 	
@@ -24,8 +35,8 @@
 				<?=bitrix_sessid_post()?>
 				<div class="lk__form">
 					<?include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/step1.php");?>
-						
-							
+					<?include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/step3.php");?>	
+					<?include($_SERVER["DOCUMENT_ROOT"].$templateFolder."/step4.php");?>		
 
 
 						<input type='hidden' value='<?=$templateFolder?>/' id='step3_file'>

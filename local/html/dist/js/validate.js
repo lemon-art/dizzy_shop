@@ -23,6 +23,10 @@ $(document).ready(function(){
 
   }
   var validateSubmitHandler = function(form) {
+  
+	$(form).submit();
+  
+	/*
     $(form).addClass('loading');
     $.ajax({
       type: "POST",
@@ -30,14 +34,18 @@ $(document).ready(function(){
       data: $(form).serialize(),
       success: function(response) {
         $(form).removeClass('loading');
+		$(form).submit();
+		
         var data = $.parseJSON(response);
         if (data.status == 'success') {
           // do something I can't test
         } else {
             $(form).find('[data-error]').html(data.message).show();
         }
+		
       }
     });
+	*/
   }
 
   var validatePhone = {
@@ -105,10 +113,9 @@ $(document).ready(function(){
     unhighlight: validateUnhighlight,
     submitHandler: validateSubmitHandler,
     rules: {
-      last_name: "required",
-      first_name: "required",
-      org: "required",
-      email: {
+      ORDER_PROP_1: "required",
+      ORDER_PROP_3: "required",
+      ORDER_PROP_2: {
         required: true,
         email: true
       },
@@ -125,10 +132,10 @@ $(document).ready(function(){
       phone: validatePhone
     },
     messages: {
-      last_name: "Заполните это поле",
-      first_name: "Заполните это поле",
+      ORDER_PROP_1: "Заполните это поле",
+      ORDER_PROP_3: "Заполните это поле",
       org: "Заполните это поле",
-      email: {
+      ORDER_PROP_2: {
           required: "Заполните это поле",
           email: "Email содержит неправильный формат"
       },
