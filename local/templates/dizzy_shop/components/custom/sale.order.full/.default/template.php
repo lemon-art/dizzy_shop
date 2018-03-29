@@ -7,7 +7,6 @@
 	$newOrder = true;
 	?>
 
-	<div class="lk__content">
 
       <div class="content__wrap content__wrap_cart">
         <div class="content__container content__container_ordered">
@@ -23,11 +22,10 @@
 <?else:?>
 	
 	
-<div class="lk__content">	
 	
 	<form method="post" action="<?= htmlspecialcharsbx($arParams["PATH_TO_ORDER"]) ?>" name="order_form" js-validate-form>
 			
-		<h1 class="lk__heading"><?$APPLICATION->ShowTitle(false)?></h1>		
+
 		
 	<?if ( !$arResult["NO_PROSUCTS"] ):?>
 	

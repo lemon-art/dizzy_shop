@@ -21,7 +21,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	<?endif;?>
 
 	<?if ( $isPersonal ):?>
-
+				</div>
 				<div class="lk__left-sidebar">
 						<?$APPLICATION->IncludeComponent(
 							"bitrix:menu",

@@ -27,7 +27,7 @@ global $APPLICATION, $USER;
 								<div class="header__profile-dropdown">
 									<div class="header__profile-dropdown-menu">
 										<a href="#" data-mfp-src="#popup-auth" js-popup><?=GetMessage("AUTH")?></a>
-										<a href="/personal/private/?register=yes"><?=GetMessage("REG")?></a>
+										<a href="/personal/register/"><?=GetMessage("REG")?></a>
 									</div>
 								</div>
 							</div>

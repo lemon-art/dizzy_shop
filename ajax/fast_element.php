@@ -121,3 +121,4 @@
 		"USE_VOTE_RATING" => "N"
 	)
 );?>
+

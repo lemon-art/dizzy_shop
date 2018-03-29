@@ -48,11 +48,11 @@ CJSCore::Init();
 				<input class="ui-input" type="password" name="USER_PASSWORD" placeholder="Введите пароль">
             </div>
             <div class="ui-group">
-				<div class="popup-auth__link"><a href="#">Забыли пароль?</a></div>
+				<div class="popup-auth__link"><a href="/personal/?forgot_password=yes">Забыли пароль?</a></div>
             </div>
             <div class="popup-auth__submit">
               <div class="popup-auth__submit-item">
-                <button class="btn btn-primary btn-primary_gray"><span><?=GetMessage("AUTH_REGISTER")?></span></button>
+                <button class="btn btn-primary btn-primary_gray" onclick="window.location = '/personal/register/'; return false;"><span><?=GetMessage("AUTH_REGISTER")?></span></button>
               </div>
               <div class="popup-auth__submit-item">
                 <button class="btn btn-primary"><span><?=GetMessage("AUTH_LOGIN_BUTTON")?></span></button>

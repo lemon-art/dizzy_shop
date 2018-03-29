@@ -222,6 +222,8 @@ if(CSite::InDir(SITE_DIR.'catalog/')){$isCatalog = true;}
 						<?if ( $isPersonal ):?>
 							   <div class="lk">
 								<div class="container">
+									<div class="lk__content">
+										<h1 class="lk__heading"><?$APPLICATION->ShowTitle(false)?></h1>
 						<?endif;?>
 
 						<?if ( !$isPersonal && !$isCatalog && !$isMain):?>

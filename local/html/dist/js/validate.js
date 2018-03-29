@@ -75,34 +75,44 @@ $(document).ready(function(){
     unhighlight: validateUnhighlight,
     submitHandler: validateSubmitHandler,
     rules: {
-      last_name: "required",
-      first_name: "required",
-      email: {
+      NAME: "required",
+      LAST_NAME: "required",
+	  captcha_word: "required",
+	  CONFIRM_PASSWORD: "required",
+      EMAIL: {
         required: true,
         email: true
       },
-      password: {
+      PASSWORD: {
         required: true,
         minlength: 6,
-      }
-      // phone: validatePhone
+      },
+      PERSONAL_PHONE: validatePhone
     },
     messages: {
-      last_name: "Заполните это поле",
-      first_name: "Заполните это поле",
-      email: {
+      NAME: "Заполните это поле",
+      LAST_NAME: "Заполните это поле",
+	  captcha_word: "Заполните это поле",
+	  CONFIRM_PASSWORD: "Заполните это поле",
+      EMAIL: {
           required: "Заполните это поле",
           email: "Email содержит неправильный формат"
       },
-      password: {
+      PASSWORD: {
           required: "Заполните это поле",
           email: "Пароль мимимум 6 символов"
       },
-      // phone: {
-      //     required: "Заполните это поле",
-      //     minlength: "Введите корректный телефон"
-      // }
-    }
+      PERSONAL_PHONE: {
+          required: "Заполните это поле",
+          minlength: "Введите корректный телефон"
+      }
+    },
+	success: function(error){
+        $(".js-registration-form .demon").each(function() { 
+			$('[name="REGISTER['+$(this).attr('name')+']"]').val( $(this).val() );
+		}); 
+		$('[name="REGISTER[LOGIN]"]').val($('[name="REGISTER[EMAIL]"]').val() );
+    },
   });
 
 

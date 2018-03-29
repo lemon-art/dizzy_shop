@@ -17,7 +17,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 ?>
 
-ффывфывфыв
+
 	<div class="lk__heading"><?=GetMessage("AUTH_REGISTER")?></div>
 
 	<?

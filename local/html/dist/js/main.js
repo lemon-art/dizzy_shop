@@ -452,7 +452,7 @@ $(document).ready(function () {
 
     var group = $(this).closest('.filter-group')
 
-    group.removeClass('is-change').find('input:checked').prop('checked', false)
+    group.removeClass('is-change').find('input:checked').click()
     group.find('input[type=range]').data('ionRangeSlider').update({
       from: 3000,
       to: 25000,
@@ -767,6 +767,8 @@ $(document).ready(function () {
 
     range.closest('.ui-range').find('.ui-range__from').text(rangeDataFrom)
     range.closest('.ui-range').find('.ui-range__to').text(rangeDataTo)
+	range.closest('.ui-range').find('.min-price').val(rangeDataFrom).click()
+    range.closest('.ui-range').find('.max-price').val(rangeDataTo).click()
     // .closest('.app-range').find('.app-range-data').text(rangeDataFrom + ' - ' + rangeDataTo)
 
   })

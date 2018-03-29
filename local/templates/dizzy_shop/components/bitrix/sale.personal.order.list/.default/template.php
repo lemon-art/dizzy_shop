@@ -14,7 +14,7 @@ if (!empty($arResult['ERRORS']['FATAL']))
 {
 	foreach($arResult['ERRORS']['FATAL'] as $error)
 	{
-		ShowError($error);
+		//ShowError($error);
 	}
 	$component = $this->__component;
 	if ($arParams['AUTH_FORM_IN_TEMPLATE'] && isset($arResult['ERRORS']['FATAL'][$component::E_NOT_AUTHORIZED]))
@@ -60,8 +60,6 @@ else
 	
 
 	
-	<div class="lk__content">
-        <h1 class="lk__heading"><?$APPLICATION->ShowTitle(false)?></h1>
 	
 	
 		<?if (!count($arResult['ORDERS']))
@@ -212,8 +210,7 @@ else
 		</div>
 	
 	
-	
-	</div>	
+
 <?	
 }
 ?>
