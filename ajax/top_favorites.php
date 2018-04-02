@@ -24,7 +24,7 @@
 	?>
 	
 	<?if( !empty($arResult['FAVORITES'])):?>
-		<a href="/catalog/wishlist/" rel="nofollow">
+		<a href="/personal/wishlist/" rel="nofollow">
 	<?endif;?>
 	
 			<svg class="ico ico-like">

@@ -118,7 +118,7 @@ $APPLICATION->SetPageProperty("title", "Каталог");
 		"LIST_OFFERS_LIMIT" => "0",
 		"SECTION_BACKGROUND_IMAGE" => "-",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
+			0 => "COLOR",
 			1 => "NEWPRODUCT",
 			2 => "MANUFACTURER",
 			3 => "MATERIAL",
@@ -161,9 +161,8 @@ $APPLICATION->SetPageProperty("title", "Каталог");
 		"PAGER_SHOW_ALL" => "N",
 		"ADD_PICT_PROP" => "MORE_PHOTO",
 		"LABEL_PROP" => array(
-			0 => "SOSTAV",
-			1 => "PODKLADKA",
-			2 => "UTEPLITEL",
+			0 => "new",
+			1 => "soon",
 		),
 		"PRODUCT_DISPLAY_MODE" => "Y",
 		"OFFER_ADD_PICT_PROP" => "MORE_PHOTO",
@@ -186,7 +185,7 @@ $APPLICATION->SetPageProperty("title", "Каталог");
 		"DETAIL_FB_USE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"USE_STORE" => "Y",
-		"BIG_DATA_RCM_TYPE" => "personal",
+		"BIG_DATA_RCM_TYPE" => "any",
 		"FIELDS" => array(
 			0 => "SCHEDULE",
 			1 => "STORE",

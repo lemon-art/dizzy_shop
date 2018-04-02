@@ -11,14 +11,6 @@ $(document).ready(function() {
             url: '/ajax/auth.php',
             data: $(this).serialize(),
             timeout: 3000,
-            error: function (request, error) {
-                if (error == "timeout") {
-                    alert('timeout');
-                }
-                else {
-                    alert('Error! Please try again!');
-                }
-            },
             success: function (data) {
                 $('#popup-auth .popup-auth__content').html(data);
 
@@ -70,29 +62,38 @@ $(document).ready(function() {
 			var id = $(this).attr('id');
 			arItem = id.split('_');
 			var productID = arItem[2];
-			var skuDiv = id.replace("add_basket_link","skudiv");
 			var arSku = [];
 			var i = 0;
-			$.each( $('#'+skuDiv + ' .row_prop_sku.selected'), function() {
+			$.each( $('.card__size-group .row_prop_sku.selected'), function() {
 				arSku[i] = $(this).data('treevalue');
 				i++;
 			});
+			
+			if ( i > 0 ){
 
-			var postData = {
-			  productID: productID,
-			  skuProps: arSku
-			};
+				var postData = {
+				  productID: productID,
+				  skuProps: arSku
+				};
 
-			$.post("/ajax/add_to_cart.php", postData,
-				function(data){
-					el.addClass('added').find('span').text('Добавлено в корзину');
+				$.post("/ajax/add_to_cart.php", postData,
+					function(data){
+					
+				
+						el.addClass('added').find('span').text('Добавлено в корзину');
 
-					$.post("/ajax/top_basket.php", {},
-					  function(data){
-						$('.header__cart').html( data );
-					});
+						$.post("/ajax/top_basket.php", {},
+						  function(data){
+							$('.header__cart').html( data );
+						});
+						
 
-			});
+				});
+				
+			}
+			else {
+				$('#error_table').show();
+			}
 		}
 
 		return false;
@@ -213,7 +214,9 @@ $(document).ready(function() {
 		var id = el.attr('data-id');
 		$(this).toggleClass('active');
 
-
+		if ( el.hasClass('lk__products-delete') ){
+			$(this).parents('tr').remove();
+		};
 
 		$.post("/ajax/add_to_like.php", { ProductID: id, ACTION: action },
 		  function(data){
@@ -381,10 +384,6 @@ $(document).ready(function() {
 
 					gallerySlides.on('init afterChange',
 					  function (event, slick, currentSlide, nextSlide) {
-						$('[data-color]').
-						  removeClass('is-active').
-						  eq(slick.currentSlide).
-						  addClass('is-active')
 					  })
 
 					gallerySlides.slick({
@@ -447,87 +446,29 @@ $(document).ready(function() {
 					})
 				  });
 				  
-				  $('[data-color]').on('click', function (event) {
+
+				  $('.card__details').
+					find('dt:first-child').
+					addClass('is-active').
+					next('dd').
+					show()
+					
+
+				  $('.card__details').on('click', 'dt', function (event) {
 					event.preventDefault()
+					if ($(this).is('.is-active')) {
+					  $(this).removeClass('is-active').next('dd').slideUp('fast')
+					}
+					else {
+					  $('.card__details').
+						find('dt').
+						removeClass('is-active').
+						next('dd').
+						slideUp('fast')
 
-					var dataColor = $(this).data('color'),
-					  dataIndex = $(this).index()
-
-					if (dataColor === '') dataColor = 'Цвет не указан'
-
-					$('[data-color]').
-					  removeClass('is-active').
-					  eq(dataIndex).
-					  addClass('is-active')
-					$('[data-color-selected]').text(dataColor)
-					$('[data-gallery-slides]').slick('slickGoTo', dataIndex)
-
+					  $(this).addClass('is-active').next('dd').slideDown('fast')
+					}
 				  })
-
-				  // elevate zoom
-
-				  function initElevateZoom () {
-					var zoomObj = $('[data-zoom-image]')
-					var zoomOpt = {
-					  zoomActivation: 'hover',
-					  zoomEnabled: true,
-					  preloading: 1,
-					  zoomLevel: 1,
-					  scrollZoom: false,
-					  scrollZoomIncrement: 0.1,
-					  minZoomLevel: false,
-					  maxZoomLevel: false,
-					  easing: false,
-					  easingAmount: 12,
-					  zoomWindowWidth: 400,
-					  zoomWindowHeight: 600,
-					  zoomWindowOffetx: 0,
-					  zoomWindowOffety: 0,
-					  zoomWindowPosition: 1,
-					  zoomWindowBgColour: '#fff',
-					  lensFadeIn: false,
-					  lensFadeOut: false,
-					  debug: false,
-					  zoomWindowFadeIn: false,
-					  zoomWindowFadeOut: false,
-					  zoomWindowAlwaysShow: false,
-					  zoomTintFadeIn: false,
-					  zoomTintFadeOut: false,
-					  borderSize: 2,
-					  showLens: true,
-					  borderColour: '#FF8F5B',
-					  lensBorderSize: 1,
-					  lensBorderColour: '#FF8F5B',
-					  zoomType: 'window',
-					  containLensZoom: false,
-					  lensColour: 'white', //colour of the lens background
-					  lensOpacity: 0.4, //opacity of the lens
-					  lenszoom: false,
-					  tint: false, //enable the tinting
-					  tintColour: '#333', //default tint color, can be anything, red, #ccc, rgb(0,0,0)
-					  tintOpacity: 0.4, //opacity of the tint
-					  gallery: false,
-					  galleryActiveClass: 'zoomGalleryActive',
-					  imageCrossfade: false,
-					  constrainType: false,  //width or height
-					  constrainSize: false,  //in pixels the dimensions you want to constrain on
-					  loadingIcon: false, //http://www.example.com/spinner.gif
-					  cursor: 'pointer',
-					  responsive: true,
-					}
-
-					if (_window.width() > 768) {
-					  zoomObj.elevateZoom(zoomOpt)
-					} else {
-					  $('.zoomContainer').remove()
-					  zoomObj.removeData('elevateZoom')
-					  zoomObj.removeData('zoomImage')
-					}
-				  }
-
-				  initElevateZoom()
-
-				  _window.resized(300, initElevateZoom)
 
 				  $('[data-gallery-slides]').
 					on('mouseover', '[data-slick-index]', function (event) {
@@ -543,6 +484,35 @@ $(document).ready(function() {
 		  }
 		}
 	 });
+	 
+	 $('.popup_size').magnificPopup({
+		type: 'ajax',
+	 });
+ 
+	//выбор цвета в быстром просмотре
+	$(document).on('click', '.popup_color', function(e) {
+		
+		
+			var url = $(this).attr('href');
+			
+			$.magnificPopup.open({
+			  items: {
+				src: url
+			  },
+			  type: 'ajax'
+			});
+		/*
+		$.post( url,
+		  function(data){
+			//$('.mfp-content').html( data );
+			
+
+			
+			
+		});
+		*/
+		return false;
+	});
 
 
 

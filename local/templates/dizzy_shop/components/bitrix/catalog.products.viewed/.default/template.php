@@ -144,8 +144,9 @@ $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navPar
 $containerName = 'container-'.$navParams['NavNum'];
 
 ?>
-
-
+	<?if ( count($arResult['ITEMS']) > 0 ):?>
+	
+		<div class="title" data-entity="header" data-showed="false"><?=GetMessage('CATALOG_VIEWED')?></div>
 		<div class="goods-slider__wrapper">
 			<div class="goods-slider__slider slick-arrows" js-slider data-slick-slides="6" data-slick-arrows="true" data-slick-infinite="true">
 				<?foreach ($arResult['ITEMS'] as $item):?>
@@ -180,7 +181,7 @@ $containerName = 'container-'.$navParams['NavNum'];
 			</div>
         </div>
 
-
+	<?endif;?>
 
 
 

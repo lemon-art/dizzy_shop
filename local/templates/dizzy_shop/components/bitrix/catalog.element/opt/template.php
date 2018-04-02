@@ -186,16 +186,16 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
               <div class="col-md-7 col-lg-8">
                 <!-- Gallery :: START-->
                 <div class="gallery" data-gallery>
-					<?if (!empty($arResult['SKU_PHOTO'])):?>
+					<?if (!empty($arResult['MORE_PHOTO'])):?>
 						<div class="gallery-slides" data-gallery-slides>
 					
-							<?foreach ($arResult['SKU_PHOTO'] as $key => $photo):?>
+							<?foreach ($arResult['MORE_PHOTO'] as $key => $photo):?>
 							
 								<div class="gallery-slides__item">
 									<figure class="gallery-slides__image">
-										<img src="<?=$photo['BIG']?>" data-zoom-image="<?=$photo['ORIGINAL']?>">
+										<img src="<?=$photo['SMALL_SRC']?>" data-zoom-image="<?=$photo['SRC']?>">
 									</figure>
-									<a class="gallery-slides__zoom" href="<?=$photo['ORIGINAL']?>" data-mfp-galllery>
+									<a class="gallery-slides__zoom" href="<?=$photo['SRC']?>" data-mfp-galllery>
 										<svg class="ico ico-zoom">
 										  <use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-zoom"></use>
 										</svg>
@@ -206,8 +206,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						</div>
 						
 						<div class="gallery-thumbs" data-gallery-thumbs>
-							<?foreach ($arResult['SKU_PHOTO'] as $key => $photo):?>
-								<div class="gallery-thumbs__item"><img src="<?=$photo['SLIDER']?>"></div>
+							<?foreach ($arResult['MORE_PHOTO'] as $key => $photo):?>
+								<div class="gallery-thumbs__item"><img src="<?=$photo['SMALL_SLIDER_SRC']?>"></div>
 							<?endforeach;?>
 						</div>
 					<?endif;?>
@@ -304,11 +304,11 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 										</tr>
 									  </thead>
 									  <tbody>
-										<?foreach ( $arResult['COLORS'] as $idColor => $nameColor ):?>
+										<?foreach ( $arResult['COLORS'] as $idColor ):?>
 										
 											<tr>
-												<td class="bg-class" style="background: url(<?=$arResult['COLORS_BG'][$idColor]?>);">
-													<span class="is-hide_mobile-s"><?=$nameColor?></span>
+												<td class="bg-class" style="background: url(<?=$arResult['COLORS_BG'][$idColor]["PICT"]?>);">
+													<span class="is-hide_mobile-s"><?=$arResult['COLORS_BG'][$idColor]["NAME"]?></span>
 												</td>
 												<?foreach ( $arResult['SIZES'] as $idSize => $valSize ):?>
 													<?if ( is_array($arResult['SKU_TABLE'][$idColor][$idSize]) ):?>

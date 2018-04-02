@@ -4,16 +4,16 @@
  * @var CBitrixComponentTemplate $this
  * @var CatalogElementComponent $component
  */
-if (array_key_exists('is_ajax', $_REQUEST) && $_REQUEST['is_ajax']=='y') {
-    $APPLICATION->RestartBuffer();
-}
+
 $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
 
 ?>
 
+
 <?
 //получаем и обрабатываем фотки предложений
+/*
 $arSkuPhoto = Array();
 
 foreach ($arResult['OFFERS'] as $keyOffer => $offer){
@@ -41,8 +41,9 @@ foreach ($arResult['OFFERS'] as $keyOffer => $offer){
 	}
 }
 
-
 $arResult['SKU_PHOTO'] = $arSkuPhoto['PROP_77'];
+
+*/
 
 //получаем кол-во товаров и навигация по ним
 $arSort = array(
@@ -93,7 +94,97 @@ $arResult['NAVIGATION']['PREV_URL'] = $arElements[$findKey-1]["DETAIL_PAGE_URL"]
 $arResult['NAVIGATION']['NEXT_URL'] = $arElements[$findKey+1]["DETAIL_PAGE_URL"];
 $arResult['NAVIGATION']['BACK_URL'] = $arResult['SECTION']['SECTION_PAGE_URL'];
 
+
+//обрабатываем фотки
+foreach ( $arResult['MORE_PHOTO'] as $key => $photo ){
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>78, 'height'=>117), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$key]["SMALL_SLIDER_SRC"] = $file['src'];
+
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>96, 'height'=>144), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$key]["BIG_SLIDER_SRC"] = $file['src'];
+	
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>460, 'height'=>690), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$key]["SMALL_SRC"] = $file['src'];
+	
+}
+$newKey = $key+1;
+
+foreach ( $arResult['PROPERTIES']['MORE_PHOTO']['VALUE'] as $key => $photo ){
+	$file = CFile::ResizeImageGet($photo, array('width'=>78, 'height'=>117), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$newKey]["SMALL_SLIDER_SRC"] = $file['src'];
+
+	$file = CFile::ResizeImageGet($photo, array('width'=>96, 'height'=>144), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$newKey]["BIG_SLIDER_SRC"] = $file['src'];
+	
+	$file = CFile::ResizeImageGet($photo, array('width'=>460, 'height'=>690), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult["MORE_PHOTO"][$newKey]["SMALL_SRC"] = $file['src'];
+	$newKey++;
+}
+
+//проверяем доступность предложений
+$arSizesNotAvalible;
+foreach( $arResult['OFFERS'] as $arOffer ){
+	if ( $arOffer['CATALOG_QUANTITY'] <= 0 ){
+		$arSizesNotAvalible[] = $arOffer['TREE']['PROP_78'];
+	}
+}
+foreach ($arResult['SKU_PROPS'] as $key => $skuProperty){
+	foreach ($skuProperty['VALUES'] as $keyVal => $arVal ){
+		if ( in_array($arVal['ID'], $arSizesNotAvalible )){
+			unset($arResult['SKU_PROPS'][$key]['VALUES'][$keyVal]);
+		}
+		
+	}
+}
+
+$arResult['COLOR'] = $arResult['DISPLAY_PROPERTIES']['COLOR']['DISPLAY_VALUE'];
+$articul = $arResult['PROPERTIES']['CML2_ARTICLE']['VALUE'];
+$arColorProducts = Array();
+//товары другого цвета
+$arFilter = Array(
+	"IBLOCK_ID"=>$arResult['IBLOCK_ID'],  
+	"ACTIVE"=>"Y", 
+	"PROPERTY_CML2_ARTICLE"=>$articul
+ );
+$res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, false, Array("IBLOCK_ID", "ID", "DETAIL_PAGE_URL", "PREVIEW_PICTURE"));
+while($ar_fields = $res->GetNext()){
+
+	$file = CFile::ResizeImageGet($ar_fields['PREVIEW_PICTURE'], array('width'=>60, 'height'=>80), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $ar_fields['SMALL_SRC'] = $file['src'];
+	$arColorProducts[] = $ar_fields;
+	
+} 
+
+$arResult['COLOR_PRODUCTS'] = $arColorProducts;
+$arResult['SHOW_PROPERTIES'] = Array();
+$arPropShow = Array( "SOSTAV","PODKLADKA","UTEPLITEL" );
+foreach ( $arResult['DISPLAY_PROPERTIES'] as $key => $arVal ){
+	if ( in_array( $key, $arPropShow ) ){
+		$arResult['SHOW_PROPERTIES'][$key] =  $arVal; 
+	}
+}
 ?>
 
 
+<?
+		global $USER;
+		$arResult["FAVORITES"] = Array();
+		if(!$USER->IsAuthorized()){
+			$arElements = unserialize($APPLICATION->get_cookie('favorites'));
+		}
+		else{
+			$idUser = $USER->GetID();
+			$rsUser = CUser::GetByID($idUser);
+			$arUser = $rsUser->Fetch();
+			$arElements = unserialize($arUser['UF_FAVORITES']);
+        }  
+		foreach ( $arElements as $key => $arElement){
+			if ( $arElement == $ProductID ) {
+				unset( $arElements[$key] );
+			}
+		}
+		$arResult["FAVORITES"] = $arElements;
+
+
+?>
 

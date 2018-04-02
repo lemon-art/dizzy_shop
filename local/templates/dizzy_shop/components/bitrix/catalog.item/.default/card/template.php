@@ -26,9 +26,20 @@ use \Bitrix\Main\Localization\Loc;
 
 
                     <div class="c-card__wrapper">
-                        <div class="c-card__label c-card__label_soon">Скоро в продаже</div>
+					
+					
+						
+						<?if ($item['LABEL']):?>
+							<?foreach ($item['LABEL_ARRAY_VALUE'] as $code => $value):?>
+								<div class="c-card__label c-card__label_<?=$code?>"><?=$value?></div>
+							<?endforeach;?>
+						<?endif;?>
+						<?if ( $price['DISCOUNT'] ):?>
+							<div class="c-card__label c-card__label_sale">Распродажа</div>
+						<?endif;?>
+						
                         <div class="c-card__ctrl">
-							<a class="c-card__ctrl-link" href="#" title="В корзину">
+							<a class="c-card__ctrl-link popup_size" href="#" data-mfp-src="/ajax/popup_size.php?ELEMENT_ID=<?=$item['ID']?>" title="В корзину">
 								<svg class="ico ico-cart">
 									<use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-cart"></use>
 								</svg>
@@ -42,27 +53,17 @@ use \Bitrix\Main\Localization\Loc;
 							
 						</div>
                         <div class="c-card__slides" data-card-slides>
-							<?/*
-							<a class="c-card__image" href="#">
-								<img src="<?=$item['PREVIEW_PICTURE']['SRC']?>" srcset="img/card-3@2x.jpg 2x">
-							</a>
-							*/?>
 							<?foreach ($morePhoto as $key => $photo):?>
 								<a class="c-card__image" href="<?=$item['DETAIL_PAGE_URL']?>">
-									<img src="<?=$photo['SRC']?>" srcset="<?=$photo['BIG']?>">
+									<img src="<?=$photo['BIG_SRC']?>" srcset="<?=$photo['SMALL_SRC']?>">
 								</a>
 							<?endforeach;?>
 						</div>
 						
                         <div class="c-card__thumbs" data-card-thumbs>
-							<?/*
-							<a class="c-card__thumb" href="#">
-								<img src="<?=$item['PREVIEW_PICTURE']['SRC']?>" srcset="img/card-3@2x.jpg 2x">
-							</a>
-							*/?>
 							<?foreach ($morePhoto as $key => $photo):?>
 								<a class="c-card__thumb" href="#">
-									<img src="<?=$photo['SLIDER']?>" srcset="<?=$photo['SLIDER_BIG']?>">
+									<img src="<?=$photo['BIG_SLIDER_SRC']?>" srcset="<?=$photo['SMALL_SLIDER_SRC']?>">
 								</a>
 							<?endforeach;?>
 						</div>
@@ -73,7 +74,15 @@ use \Bitrix\Main\Localization\Loc;
                       
 					<div class="c-card__category">Куртка</div>
                       
-					<div class="c-card__price"><?=$price['PRINT_RATIO_PRICE'];?></div>
+					<div class="c-card__price">
+						<?=$price['PRINT_PRICE'];?>
+						<?if ( $price['DISCOUNT'] ):?>
+							<span class="c-card__price-old"><?=$price['PRINT_BASE_PRICE'];?></span>
+						<?endif;?>
+						
+					
+					
+					</div>
                       
 					<div class="c-card__size">
 						<b>Размеры:</b> 

@@ -186,16 +186,16 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
               <div class="col-md-7 col-lg-8">
                 <!-- Gallery :: START-->
                 <div class="gallery" data-gallery>
-					<?if (!empty($arResult['SKU_PHOTO'])):?>
+					<?if (!empty($arResult['MORE_PHOTO'])):?>
 						<div class="gallery-slides" data-gallery-slides>
 					
-							<?foreach ($arResult['SKU_PHOTO'] as $key => $photo):?>
+							<?foreach ($arResult['MORE_PHOTO'] as $key => $photo):?>
 							
 								<div class="gallery-slides__item">
 									<figure class="gallery-slides__image">
-										<img src="<?=$photo['BIG']?>" data-zoom-image="<?=$photo['ORIGINAL']?>">
+										<img src="<?=$photo['SMALL_SRC']?>" data-zoom-image="<?=$photo['SRC']?>">
 									</figure>
-									<a class="gallery-slides__zoom" href="<?=$photo['ORIGINAL']?>" data-mfp-galllery>
+									<a class="gallery-slides__zoom" href="<?=$photo['SRC']?>" data-mfp-galllery>
 										<svg class="ico ico-zoom">
 										  <use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-zoom"></use>
 										</svg>
@@ -206,8 +206,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						</div>
 						
 						<div class="gallery-thumbs" data-gallery-thumbs>
-							<?foreach ($arResult['SKU_PHOTO'] as $key => $photo):?>
-								<div class="gallery-thumbs__item"><img src="<?=$photo['SLIDER']?>"></div>
+							<?foreach ($arResult['MORE_PHOTO'] as $key => $photo):?>
+								<div class="gallery-thumbs__item"><img src="<?=$photo['SMALL_SLIDER_SRC']?>"></div>
 							<?endforeach;?>
 						</div>
 					<?endif;?>
@@ -233,11 +233,40 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 				  
 				  <a class="card__price-link" href="#">
                     <svg class="ico ico-commerce">
-                      <use xlink:href="img/sprite.svg#ico-commerce"></use>
+                      <use xlink:href="<?=SITE_TEMPLATE_PATH?>/img/sprite.svg#ico-commerce"></use>
                     </svg>
                     <u>Показать оптовую цену</u></a>
                 </div>
+				
+				
+							<div class="card__colors">
+								<p class="card__colors-text"><mark>Цвет:</mark>
+									<span><?=$arResult['COLOR']?></span>
+								</p>
+								
+					  
+								<div class="card__colors-group">
+									<?foreach ($arResult['COLOR_PRODUCTS'] as $key=>$arValue):?>
+									
+											
+												
+												<a href="<?=$arValue['DETAIL_PAGE_URL']?>" class="card__colors-item <?if ( $arValue['ID'] == $arResult['ID'] ):?>is-active<?endif;?>">
+													<img src="<?=$arValue['SMALL_SRC']?>">
+												</a>
+										
+								   
+									<?endforeach;?>
+								</div>
+							</div>
+				
+				
 				<div id="<?=$itemIds['TREE_ID']?>">
+				
+				
+
+
+				
+				
 					<?foreach ($arResult['SKU_PROPS'] as $skuProperty):?>				
 					
 						<?if (!isset($arResult['OFFERS_PROP'][$skuProperty['CODE']]))
@@ -251,32 +280,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 								'VALUES_COUNT' => $skuProperty['VALUES_COUNT']
 							);
 						?>
+						
+
 
 						<?if ($skuProperty['SHOW_MODE'] === 'PICT'):?>
 						
-							<div class="card__colors" data-entity="sku-line-block">
-								<p class="card__colors-text"><mark><?=$skuProperty['NAME']?>:</mark>
-									<span data-color-selected><?=$skuProperty['VALUES'][0]['NAME']?></span>
-								</p>
-								
-					  
-								<div class="card__colors-group">
-									<?foreach ($skuProperty['VALUES'] as $key=>&$value):?>
-									
-										<?if ( $key ):?>
-											<div class="card__colors-item row_prop_sku" data-color="<?=$value['NAME']?>" 
-												data-treevalue="<?=$propertyId?>_<?=$value['ID']?>" data-onevalue="<?=$value['ID']?>">
-												<?if ( $arResult['SKU_PHOTO'][$value['ID']]["SMALL"] ):?>
-													<img src="<?=$arResult['SKU_PHOTO'][$value['ID']]["SMALL"]?>">
-												<?else:?>
-													<img src="<?=$value['PICT']['SRC']?>">
-												<?endif;?>
-											</div>
-										<?endif;?>
-								   
-									<?endforeach;?>
-								</div>
-							</div>
+
 							
 						<?else:?>
 							<div class="card__size" data-entity="sku-line-block">
@@ -288,6 +297,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 									<u>Таблица размеров</u>
 								</a>
 								<div class="card__size-group">
+								
 									<?foreach ($skuProperty['VALUES'] as $key => &$value):?>
 										<?if ( $key ):?>
 											<label class="card__check row_prop_sku" data-treevalue="<?=$propertyId?>_<?=$value['ID']?>" data-onevalue="<?=$value['ID']?>" >
@@ -303,7 +313,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						
 					<?endforeach;?>
 				</div>
-				
+				<div id="error_table" style="display: none;">Выберите размер!</div>
                 <div class="card__ctrl" data-entity="main-button-container">
 					<div id="<?=$itemIds['BASKET_ACTIONS_ID']?>"> 
 						<a class="btn btn-primary <?=$showButtonClassName?> add-to-cart" href="javascript:void(0);" id="<?=$itemIds['ADD_BASKET_LINK']?>">
@@ -333,7 +343,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     <ul>
 					
 										<?
-										foreach ($arResult['DISPLAY_PROPERTIES'] as $property)
+										foreach ($arResult['SHOW_PROPERTIES'] as $property)
 										{
 											?>
 											<li>
@@ -351,11 +361,49 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     </ul>
                   </dd>
                   <dt>Доставка</dt>
-                  <dd>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Журчит прямо по всей вскоре инициал выйти всеми продолжил, коварный продолжил, свой подзаголовок речью реторический города жизни которое своих семантика, своих.</dd>
-                  <dt>Возврат</dt>
-                  <dd>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Журчит прямо по всей вскоре инициал выйти всеми продолжил, коварный продолжил, свой подзаголовок речью реторический города жизни которое своих семантика, своих.</dd>
-                  <dt>Для оптовых клиентов</dt>
-                  <dd>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Журчит прямо по всей вскоре инициал выйти всеми продолжил, коварный продолжил, свой подзаголовок речью реторический города жизни которое своих семантика, своих.</dd>
+					<dd>
+				  
+									<?$APPLICATION->IncludeComponent(
+										"bitrix:main.include",
+										"",
+										Array(
+											"AREA_FILE_SHOW" => "file",
+											"AREA_FILE_SUFFIX" => "inc",
+											"EDIT_TEMPLATE" => "",
+											"PATH" => "/include/catalog_delivery_text.php"
+										)
+									);?>
+					</dd>
+                  
+				  <dt>Возврат</dt>
+                  <dd>
+									<?$APPLICATION->IncludeComponent(
+										"bitrix:main.include",
+										"",
+										Array(
+											"AREA_FILE_SHOW" => "file",
+											"AREA_FILE_SUFFIX" => "inc",
+											"EDIT_TEMPLATE" => "",
+											"PATH" => "/include/catalog_return_text.php"
+										)
+									);?>
+				  </dd>
+                  
+				  
+				  <dt>Для оптовых клиентов</dt>
+                  <dd>
+									<?$APPLICATION->IncludeComponent(
+										"bitrix:main.include",
+										"",
+										Array(
+											"AREA_FILE_SHOW" => "file",
+											"AREA_FILE_SUFFIX" => "inc",
+											"EDIT_TEMPLATE" => "",
+											"PATH" => "/include/catalog_opt_text.php"
+										)
+									);?>
+				  
+				 </dd>
                 </dl>
               </div>
             </div>

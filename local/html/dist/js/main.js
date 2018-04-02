@@ -396,9 +396,19 @@ $(document).ready(function () {
       $('.sorting__select-option').removeClass('is-active')
       $(this).addClass('is-active')
       var selected = $(this).text()
+	  var sort = $(this).data('sort')
 
       $('.sorting__select-trigger').text(selected)
-      alert(selected)
+	  
+	   $.ajax({
+            type: "POST",
+            url: '/ajax/set_sort.php',
+            data: {sort:sort},
+            success: function (data) {
+				window.location = "";
+            }
+        });
+		
     })
 
   $('body').on('click', function (event) {
@@ -410,6 +420,19 @@ $(document).ready(function () {
 
     }
   })
+  
+    $('body').on('click', '.page_count', function (event) {
+		var page = $(this).data('page')
+		$.ajax({
+            type: "POST",
+            url: '/ajax/set_page.php',
+            data: {page:page},
+            success: function (data) {
+				window.location = "";
+            }
+        });
+  })
+  
 
   // --------------------------------------------------------------------------
   // Filter
@@ -542,10 +565,12 @@ $(document).ready(function () {
 
     gallerySlides.on('init afterChange',
       function (event, slick, currentSlide, nextSlide) {
-        $('[data-color]').
+        /*
+		$('[data-color]').
           removeClass('is-active').
           eq(slick.currentSlide).
           addClass('is-active')
+		  */
       })
 
     gallerySlides.slick({
@@ -608,6 +633,7 @@ $(document).ready(function () {
     })
   })
 
+/*
   $('[data-color]').on('click', function (event) {
     event.preventDefault()
 
@@ -624,7 +650,7 @@ $(document).ready(function () {
     $('[data-gallery-slides]').slick('slickGoTo', dataIndex)
 
   })
-
+*/
   // elevate zoom
 
   function initElevateZoom () {
@@ -923,9 +949,16 @@ $(document).ready(function () {
   })
 
   // allow only one checkbox
-  $('.card__check-input').on('change', function () {
+  $(document).on('change', '.card__check-input', function () {
     var inputs = $(this).parent().siblings().find('input')
     inputs.prop('checked', false)
+	
+	$(this).parent().parent().find('.selected').removeClass('selected');
+	
+	if ( $(this).prop('checked') ){
+		$(this).parent().addClass('selected');
+		$('#error_table').hide();
+	}
   })
 
   ////////////

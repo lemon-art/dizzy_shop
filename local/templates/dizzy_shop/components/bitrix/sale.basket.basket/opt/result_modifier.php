@@ -24,13 +24,14 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem){
 	
 	$arElementData = Array();
 	$arPriceData = Array();
-	
+	$arElementID = Array();
 	$arSelect = Array("ID", "IBLOCK_ID", "PROPERTY_CML2_LINK.ID", "PROPERTY_CML2_LINK.NAME", "PROPERTY_CML2_LINK.DETAIL_PAGE_URL", "PROPERTY_CML2_LINK.DETAIL_PICTURE", "DETAIL_PICTURE");
 	$arFilter = Array("IBLOCK_ID"=>5, "ID"=>$arElements);
 	$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
 	while($ar_fields = $res->GetNext()){
 	
-	
+		$arElementID[] = $ar_fields["PROPERTY_CML2_LINK_ID"];
+		
 		$arPriceData[$ar_fields["PROPERTY_CML2_LINK_ID"]] = Array(
 			"PRICE" 	 => $arElementsCartData[$ar_fields['ID']]['PRICE'],
 			"FULL_PRICE" => ($arPriceData[$ar_fields["PROPERTY_CML2_LINK_ID"]]["FULL_PRICE"] + $arElementsCartData[$ar_fields['ID']]['PRICE'] * $arElementsCartData[$ar_fields['ID']]['QUANTITY'])
@@ -50,6 +51,37 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem){
 	
 		if ( !in_array(  $ar_fields["PROPERTY_CML2_LINK_ID"], $arProducts ) )
 			$arProducts[] = $ar_fields["PROPERTY_CML2_LINK_ID"];
+	}
+	
+	//получаем все артиклы для группировки
+	$arArticul = Array();
+	$arArticulProducts = Array();
+	$arSelect = Array("ID", "IBLOCK_ID", "PROPERTY_CML2_ARTICLE");
+	$arFilter = Array("IBLOCK_ID"=>4, "ID"=>$arElementID);
+	$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+	while($ar_fields = $res->GetNext()){
+	
+		if ( !$arArticul[$ar_fields['PROPERTY_CML2_ARTICLE_VALUE']] ){
+			$arArticul[$ar_fields['PROPERTY_CML2_ARTICLE_VALUE']] = $ar_fields["ID"];	
+		}
+		
+		$arArticulProducts[$ar_fields['PROPERTY_CML2_ARTICLE_VALUE']][] = $ar_fields["ID"];
+	}
+	
+	//удаляем лишние (дубли) продуктов с одним артикулом
+	foreach ( $arProducts as $key => $item ){
+		if ( !in_array( $item, $arArticul ) )
+			unset( $arProducts[$key] );
+	}
+	
+	//формируем общую цену для товаров сгруппированных по артикулу
+	foreach ( $arPriceData as $key => $arPrice ){
+		$fullPrice = 0;
+		$keyArticle =  array_search ($key, $arArticul);
+		foreach ( $arArticulProducts[$keyArticle] as $item ){
+			$fullPrice += $arPriceData[$item]['FULL_PRICE'];
+		}
+		$arPriceData[$key]['FULL_PRICE'] = $fullPrice;
 	}
 	
 	$arResult["ELEMENTS"] = $arProducts;

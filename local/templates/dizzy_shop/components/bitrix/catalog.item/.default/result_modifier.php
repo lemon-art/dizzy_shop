@@ -5,7 +5,7 @@
  * @var CatalogSectionComponent $component
  */
  
-
+/*
 foreach ( $arResult['ITEM']["OFFERS"] as $key=>$offer){
 
 	$keyProp = $offer["TREE"]["PROP_77"];
@@ -32,7 +32,42 @@ foreach ( $arResult['ITEM']["OFFERS"] as $key=>$offer){
 		}
 }
 $arResult['ITEM']["MORE_PHOTO"] = $morePhoto;
+*/
+foreach ( $arResult['ITEM']["MORE_PHOTO"] as $key => $photo ){
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>48, 'height'=>72), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult['ITEM']["MORE_PHOTO"][$key]["SMALL_SLIDER_SRC"] = $file['src'];
+
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>96, 'height'=>144), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult['ITEM']["MORE_PHOTO"][$key]["BIG_SLIDER_SRC"] = $file['src'];
+	
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>220, 'height'=>330), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult['ITEM']["MORE_PHOTO"][$key]["SMALL_SRC"] = $file['src'];
+	
+	$file = CFile::ResizeImageGet($photo['ID'], array('width'=>440, 'height'=>660), BX_RESIZE_IMAGE_PROPORTIONAL, true);                
+    $arResult['ITEM']["MORE_PHOTO"][$key]["BIG_SRC"] = $file['src'];
+}
+
+$arSizes = Array();
+foreach ( $arResult['ITEM']['OFFERS'] as $arOffer ){
+
+	$arSizes[] = $arOffer['TREE']['PROP_78'];
+}
+
+foreach ( $arParams['SKU_PROPS']['SIZES_CLOTHES']['VALUES'] as $key => $arVal ){
+	if ( !in_array($key, $arSizes) ){
+		unset( $arParams['SKU_PROPS']['SIZES_CLOTHES']['VALUES'][$key] );
+	}
+}
+
+if ( count($arParams['SKU_PROPS']['SIZES_CLOTHES']['VALUES']) == 1 ){
+	$arResult['ITEM']['LABEL'] = true;
+	$arResult['ITEM']['LABEL_ARRAY_VALUE']['last'] = 'Последний размер';
+}
+
 ?>
+
+
+
 
 <?
 		global $USER;
@@ -55,5 +90,6 @@ $arResult['ITEM']["MORE_PHOTO"] = $morePhoto;
 
 
 ?>
+
 
 

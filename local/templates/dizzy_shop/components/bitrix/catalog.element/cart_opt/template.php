@@ -176,11 +176,11 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 										</tr>
 									  </thead>
 									  <tbody>
-										<?foreach ( $arResult['COLORS'] as $idColor => $nameColor ):?>
+										<?foreach ( $arResult['COLORS'] as $idColor ):?>
 										
 											<tr>
-												<td class="bg-class" style="background: url(<?=$arResult['COLORS_BG'][$idColor]?>);">
-													<span class="is-hide_mobile-s"><?=$nameColor?></span>
+												<td class="bg-class" style="background: url(<?=$arResult['COLORS_BG'][$idColor]["PICT"]?>);">
+													<span class="is-hide_mobile-s"><?=$arResult['COLORS_BG'][$idColor]["NAME"]?></span>
 												</td>
 												<?foreach ( $arResult['SIZES'] as $idSize => $valSize ):?>
 													<?if ( is_array($arResult['SKU_TABLE'][$idColor][$idSize]) ):?>

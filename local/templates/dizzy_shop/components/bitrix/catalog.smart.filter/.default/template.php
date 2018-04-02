@@ -24,12 +24,31 @@ if (isset($templateData['TEMPLATE_THEME']))
 //$this->addExternalCss("/bitrix/css/main/bootstrap.css");
 //$this->addExternalCss("/bitrix/css/main/font-awesome.css");
 ?>
+
 <div class="filter bx-filter">
 	<button class="filter__toggle"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></button>
 
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
 			
 			<div class="filter__dropdown">	
+			
+				<?$APPLICATION->IncludeComponent(
+					"bitrix:menu",
+					"filter",
+					Array(
+						"ALLOW_MULTI_SELECT" => "N",
+						"CHILD_MENU_TYPE" => "left",
+						"DELAY" => "N",
+						"MAX_LEVEL" => "2",
+						"MENU_CACHE_GET_VARS" => array(""),
+						"MENU_CACHE_TIME" => "3600",
+						"MENU_CACHE_TYPE" => "N",
+						"MENU_CACHE_USE_GROUPS" => "Y",
+						"ROOT_MENU_TYPE" => "left",
+						"USE_EXT" => "Y"
+					)
+				);?>
+			
 			
 				<?foreach($arResult["HIDDEN"] as $arItem):?>
 				<input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
@@ -64,62 +83,6 @@ if (isset($templateData['TEMPLATE_THEME']))
 						}
 						?>
 						
-						
-						<?/*
-						
-						<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box bx-active">
-							<span class="bx-filter-container-modef"></span>
-							<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)"><span><?=$arItem["NAME"]?> <i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i></span></div>
-							<div class="bx-filter-block" data-role="bx_filter_block">
-								<div class="row bx-filter-parameters-box-container">
-									<div class="col-xs-6 bx-filter-parameters-box-container-block bx-left">
-										<i class="bx-ft-sub"><?=GetMessage("CT_BCSF_FILTER_FROM")?></i>
-										<div class="bx-filter-input-container">
-											<input
-												class="min-price"
-												type="text"
-												name="<?echo $arItem["VALUES"]["MIN"]["CONTROL_NAME"]?>"
-												id="<?echo $arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"
-												value="<?echo $arItem["VALUES"]["MIN"]["HTML_VALUE"]?>"
-												size="5"
-												onkeyup="smartFilter.keyup(this)"
-											/>
-										</div>
-									</div>
-									<div class="col-xs-6 bx-filter-parameters-box-container-block bx-right">
-										<i class="bx-ft-sub"><?=GetMessage("CT_BCSF_FILTER_TO")?></i>
-										<div class="bx-filter-input-container">
-											<input
-												class="max-price"
-												type="text"
-												name="<?echo $arItem["VALUES"]["MAX"]["CONTROL_NAME"]?>"
-												id="<?echo $arItem["VALUES"]["MAX"]["CONTROL_ID"]?>"
-												value="<?echo $arItem["VALUES"]["MAX"]["HTML_VALUE"]?>"
-												size="5"
-												onkeyup="smartFilter.keyup(this)"
-											/>
-										</div>
-									</div>
-
-									<div class="col-xs-10 col-xs-offset-1 bx-ui-slider-track-container">
-										<div class="bx-ui-slider-track" id="drag_track_<?=$key?>">
-											<?for($i = 0; $i <= $step_num; $i++):?>
-											<div class="bx-ui-slider-part p<?=$i+1?>"><span><?=$prices[$i]?></span></div>
-											<?endfor;?>
-
-											<div class="bx-ui-slider-pricebar-vd" style="left: 0;right: 0;" id="colorUnavailableActive_<?=$key?>"></div>
-											<div class="bx-ui-slider-pricebar-vn" style="left: 0;right: 0;" id="colorAvailableInactive_<?=$key?>"></div>
-											<div class="bx-ui-slider-pricebar-v"  style="left: 0;right: 0;" id="colorAvailableActive_<?=$key?>"></div>
-											<div class="bx-ui-slider-range" id="drag_tracker_<?=$key?>"  style="left: 0%; right: 0%;">
-												<a class="bx-ui-slider-handle left"  style="left:0;" href="javascript:void(0)" id="left_slider_<?=$key?>"></a>
-												<a class="bx-ui-slider-handle right" style="right:0;" href="javascript:void(0)" id="right_slider_<?=$key?>"></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						*/?>
 						
 						<div class="filter-group bx-filter-parameters-box bx-active">
 						
@@ -362,8 +325,8 @@ if (isset($templateData['TEMPLATE_THEME']))
 									break;
 								case "G"://CHECKBOXES_WITH_PICTURES
 									?>
-									<div class="col-xs-12">
-										<div class="bx-filter-param-btn-inline">
+									
+										
 										<?foreach ($arItem["VALUES"] as $val => $ar):?>
 											<input
 												style="display: none"
@@ -388,8 +351,8 @@ if (isset($templateData['TEMPLATE_THEME']))
 												</span>
 											</label>
 										<?endforeach?>
-										</div>
-									</div>
+										
+									
 									<?
 									break;
 								case "H"://CHECKBOXES_WITH_PICTURES_AND_LABELS
@@ -431,7 +394,7 @@ if (isset($templateData['TEMPLATE_THEME']))
 								case "P"://DROPDOWN
 									$checkedItemExist = false;
 									?>
-									<div class="col-xs-12">
+									
 										<div class="bx-filter-select-container">
 											<div class="bx-filter-select-block" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
 												<div class="bx-filter-select-text" data-role="currentOption">
@@ -491,7 +454,7 @@ if (isset($templateData['TEMPLATE_THEME']))
 												</div>
 											</div>
 										</div>
-									</div>
+									
 									<?
 									break;
 								case "R"://DROPDOWN_WITH_PICTURES_AND_LABELS
@@ -661,7 +624,8 @@ if (isset($templateData['TEMPLATE_THEME']))
 
 										<?if ( $arItem["CODE"] == "SIZES_CLOTHES" ):?>
 											<div class="row">	
-												<?$row_count = count( $arItem["VALUES"] ) % 3;?>
+												<?$row_count = ceil(count( $arItem["VALUES"] ) / 3);?>
+											
 												<div class="col-4">
 										<?endif;?>
 											

@@ -262,17 +262,17 @@ COLOR
 	border-image: url(images/border_default.png) 2 repeat;
 }
 /* COLOR */
-/*.bx-filter .bx-filter-select-container.bx-active,
-.bx-filter .bx-filter-select-container:focus {
+.bx-active,
+{
 	border-color: #499fd8;
 }
-.bx-retina .bx-filter .bx-filter-select-container.bx-active,
+.bx-active,
 .bx-retina .bx-filter .bx-filter-select-container:focus {
 	-webkit-border-image: url(images/active.png) 2 repeat;
 	   -moz-border-image: url(images/active.png) 2 repeat;
 		 -o-border-image: url(images/active.png) 2 repeat;
 			border-image: url(images/active.png) 2 repeat;
-}*/
+}
 .bx-filter .bx-filter-select-block {
 	position: relative;
 	display: block;
